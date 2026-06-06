@@ -1,0 +1,613 @@
+{
+  "version": "2.0",
+  "canteens": [
+    {
+      "id": "c1",
+      "name": "广州南校园中大学人馆食堂",
+      "campus": "广州南校园",
+      "avgPrice": 22,
+      "hygiene": 4.6,
+      "taste": 4.7,
+      "service": 4.4,
+      "desc": "位于南校园，适合想吃风味菜和小组聚餐的同学。"
+    },
+    {
+      "id": "c2",
+      "name": "广州南校园南草坪食堂",
+      "campus": "广州南校园",
+      "avgPrice": 14,
+      "hygiene": 4.5,
+      "taste": 4.3,
+      "service": 4.3,
+      "desc": "靠近南校园草坪区域，适合课间快速就餐。"
+    },
+    {
+      "id": "c3",
+      "name": "广州南校园学一食堂",
+      "campus": "广州南校园",
+      "avgPrice": 13,
+      "hygiene": 4.5,
+      "taste": 4.4,
+      "service": 4.2,
+      "desc": "南校园日常用餐高频食堂，价格和出餐速度比较友好。"
+    },
+    {
+      "id": "c4",
+      "name": "广州南校园满园食堂",
+      "campus": "广州南校园",
+      "avgPrice": 15,
+      "hygiene": 4.4,
+      "taste": 4.4,
+      "service": 4.2,
+      "desc": "靠近西门生活区，套餐类选择稳定。"
+    },
+    {
+      "id": "c5",
+      "name": "广州南校园康乐园餐厅",
+      "campus": "广州南校园",
+      "avgPrice": 20,
+      "hygiene": 4.7,
+      "taste": 4.5,
+      "service": 4.5,
+      "desc": "适合同学讨论、课程设计小组聚餐和稍正式的校园用餐。"
+    },
+    {
+      "id": "c6",
+      "name": "广州南校园松涛园食堂",
+      "campus": "广州南校园",
+      "avgPrice": 16,
+      "hygiene": 4.6,
+      "taste": 4.4,
+      "service": 4.3,
+      "desc": "南校园东北侧食堂，面点和清淡菜品较适合日常就餐。"
+    },
+    {
+      "id": "c7",
+      "name": "广州南校园春晖园食堂",
+      "campus": "广州南校园",
+      "avgPrice": 16,
+      "hygiene": 4.6,
+      "taste": 4.6,
+      "service": 4.3,
+      "desc": "春晖园档口较多，晚餐和夜宵时段人气较高。"
+    },
+    {
+      "id": "c8",
+      "name": "广州南校园西北风味食堂",
+      "campus": "广州南校园",
+      "avgPrice": 18,
+      "hygiene": 4.4,
+      "taste": 4.7,
+      "service": 4.2,
+      "desc": "位于春晖园东厅二楼，适合想吃面食和西北风味的同学。"
+    },
+    {
+      "id": "c9",
+      "name": "广州南校园学五食堂",
+      "campus": "广州南校园",
+      "avgPrice": 17,
+      "hygiene": 4.5,
+      "taste": 4.6,
+      "service": 4.2,
+      "desc": "南校园东侧食堂，窗口类型丰富，适合换口味。"
+    },
+    {
+      "id": "c10",
+      "name": "广州北校园学一食堂",
+      "campus": "广州北校园",
+      "avgPrice": 15,
+      "hygiene": 4.6,
+      "taste": 4.3,
+      "service": 4.4,
+      "desc": "北校园常用食堂之一，出餐效率较好。"
+    },
+    {
+      "id": "c11",
+      "name": "广州北校园学二食堂",
+      "campus": "广州北校园",
+      "avgPrice": 16,
+      "hygiene": 4.5,
+      "taste": 4.4,
+      "service": 4.3,
+      "desc": "靠近北校园东侧生活区，套餐和面食类选择稳定。"
+    },
+    {
+      "id": "c12",
+      "name": "广州北校园学三食堂",
+      "campus": "广州北校园",
+      "avgPrice": 17,
+      "hygiene": 4.5,
+      "taste": 4.5,
+      "service": 4.3,
+      "desc": "北校园北侧食堂，地道风味适合午晚餐。"
+    },
+    {
+      "id": "c13",
+      "name": "广州东校园第一食堂",
+      "campus": "广州东校园",
+      "avgPrice": 15,
+      "hygiene": 4.5,
+      "taste": 4.4,
+      "service": 4.3,
+      "desc": "东校园学生生活区常用食堂，盖饭和套餐选择多。"
+    },
+    {
+      "id": "c14",
+      "name": "广州东校园第二食堂",
+      "campus": "广州东校园",
+      "avgPrice": 16,
+      "hygiene": 4.5,
+      "taste": 4.4,
+      "service": 4.3,
+      "desc": "东校园日常用餐频率高，面食和快餐选择多。"
+    },
+    {
+      "id": "c15",
+      "name": "广州东校园第三食堂",
+      "campus": "广州东校园",
+      "avgPrice": 18,
+      "hygiene": 4.4,
+      "taste": 4.7,
+      "service": 4.2,
+      "desc": "东校园地道风味集中，适合想换口味的同学。"
+    },
+    {
+      "id": "c16",
+      "name": "广州东校园第五食堂",
+      "campus": "广州东校园",
+      "avgPrice": 17,
+      "hygiene": 4.5,
+      "taste": 4.5,
+      "service": 4.2,
+      "desc": "靠近学生宿舍区，适合晚课前后就餐。"
+    },
+    {
+      "id": "c17",
+      "name": "广州东校园行政楼食堂",
+      "campus": "广州东校园",
+      "avgPrice": 20,
+      "hygiene": 4.7,
+      "taste": 4.4,
+      "service": 4.6,
+      "desc": "靠近行政楼区域，环境和卫生评价较稳定。"
+    },
+    {
+      "id": "c18",
+      "name": "珠海校区榕园食堂",
+      "campus": "珠海校区",
+      "avgPrice": 16,
+      "hygiene": 4.7,
+      "taste": 4.5,
+      "service": 4.4,
+      "desc": "珠海校区生活区常用食堂，早餐和面点评价稳定。"
+    },
+    {
+      "id": "c19",
+      "name": "珠海校区荔园食堂",
+      "campus": "珠海校区",
+      "avgPrice": 18,
+      "hygiene": 4.6,
+      "taste": 4.6,
+      "service": 4.3,
+      "desc": "晚餐和夜宵选择较多，适合自习后补给。"
+    },
+    {
+      "id": "c20",
+      "name": "珠海校区橘园食堂",
+      "campus": "珠海校区",
+      "avgPrice": 17,
+      "hygiene": 4.6,
+      "taste": 4.5,
+      "service": 4.3,
+      "desc": "靠近珠海校区生活区，套餐和清淡菜品较稳定。"
+    },
+    {
+      "id": "c21",
+      "name": "珠海校区若海食堂",
+      "campus": "珠海校区",
+      "avgPrice": 18,
+      "hygiene": 4.7,
+      "taste": 4.5,
+      "service": 4.4,
+      "desc": "靠近若海生活区，地道风味适合午晚餐。"
+    },
+    {
+      "id": "c22",
+      "name": "深圳校区西园食堂",
+      "campus": "深圳校区",
+      "avgPrice": 17,
+      "hygiene": 4.6,
+      "taste": 4.4,
+      "service": 4.3,
+      "desc": "深圳校区西侧常用食堂，适合日常快速就餐。"
+    },
+    {
+      "id": "c23",
+      "name": "深圳校区相山餐厅",
+      "campus": "深圳校区",
+      "avgPrice": 21,
+      "hygiene": 4.7,
+      "taste": 4.6,
+      "service": 4.5,
+      "desc": "适合小组讨论、聚餐和稍正式的校园用餐。"
+    },
+    {
+      "id": "c24",
+      "name": "深圳校区东园食堂",
+      "campus": "深圳校区",
+      "avgPrice": 18,
+      "hygiene": 4.6,
+      "taste": 4.5,
+      "service": 4.3,
+      "desc": "深圳校区东侧食堂，套餐和地道风味兼具。"
+    }
+  ],
+  "windows": [
+    {
+      "id": "w1",
+      "canteenId": "c1",
+      "name": "烧腊窗口",
+      "desc": "提供粤式烧腊套餐，口味偏清淡，肉质鲜嫩。"
+    },
+    {
+      "id": "w2",
+      "canteenId": "c1",
+      "name": "家常菜窗口",
+      "desc": "提供家常盖饭，口味家常，价格实惠。"
+    },
+    {
+      "id": "w3",
+      "canteenId": "c2",
+      "name": "风味粉面",
+      "desc": "提供各类粉面，汤底浓郁，口感爽滑。"
+    },
+    {
+      "id": "w4",
+      "canteenId": "c2",
+      "name": "川湘风味",
+      "desc": "提供麻辣香锅等，辣味十足，香气扑鼻。"
+    },
+    {
+      "id": "w5",
+      "canteenId": "c3",
+      "name": "粤式套餐",
+      "desc": "提供粤式套餐，摆盘精致，适合聚餐。"
+    },
+    {
+      "id": "w6",
+      "canteenId": "c4",
+      "name": "营养快餐",
+      "desc": "提供营养餐，荤素搭配，营养均衡。"
+    },
+    {
+      "id": "w7",
+      "canteenId": "c4",
+      "name": "面食窗口",
+      "desc": "提供云吞面等，皮薄馅足，汤鲜味美。"
+    },
+    {
+      "id": "w8",
+      "canteenId": "c5",
+      "name": "扒饭窗口",
+      "desc": "提供各类扒饭，肉质鲜嫩，份量充足。"
+    },
+    {
+      "id": "w9",
+      "canteenId": "c5",
+      "name": "拉面窗口",
+      "desc": "提供牛肉面，面量足，汤底浓郁。"
+    },
+    {
+      "id": "w10",
+      "canteenId": "c6",
+      "name": "川湘小炒",
+      "desc": "提供川湘菜品，辣味正宗，下饭神器。"
+    },
+    {
+      "id": "w11",
+      "canteenId": "c7",
+      "name": "早餐窗口",
+      "desc": "提供早餐点心，种类丰富，新鲜可口。"
+    },
+    {
+      "id": "w12",
+      "canteenId": "c7",
+      "name": "汤粉窗口",
+      "desc": "提供汤粉，汤鲜味美，粉Q弹爽滑。"
+    },
+    {
+      "id": "w13",
+      "canteenId": "c8",
+      "name": "小炒窗口",
+      "desc": "提供砂锅小炒，锅气十足，香气四溢。"
+    },
+    {
+      "id": "w14",
+      "canteenId": "c8",
+      "name": "夜宵窗口",
+      "desc": "提供夜宵小吃，种类多样，适合深夜觅食。"
+    }
+  ],
+  "dishes": [
+    {
+      "id": "d1",
+      "windowId": "w1",
+      "name": "烧鸭双拼饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "广式烧味风格，皮脆肉嫩，搭配青菜和米饭。"
+    },
+    {
+      "id": "d2",
+      "windowId": "w1",
+      "name": "叉烧饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "蜜汁叉烧，甜咸适中，肉质鲜嫩多汁。"
+    },
+    {
+      "id": "d3",
+      "windowId": "w2",
+      "name": "番茄鸡蛋盖饭",
+      "price": 11,
+      "rating": null,
+      "heat": 0,
+      "tag": "家常菜",
+      "desc": "酸甜可口，鸡蛋嫩滑，下饭神器。"
+    },
+    {
+      "id": "d4",
+      "windowId": "w2",
+      "name": "青椒肉丝盖饭",
+      "price": 13,
+      "rating": null,
+      "heat": 0,
+      "tag": "家常菜",
+      "desc": "青椒爽脆，肉丝鲜嫩，家常口味。"
+    },
+    {
+      "id": "d5",
+      "windowId": "w3",
+      "name": "沙茶牛肉粉",
+      "price": 17,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "沙茶汤底浓郁，牛肉片大，米粉爽滑。"
+    },
+    {
+      "id": "d6",
+      "windowId": "w3",
+      "name": "酸辣粉",
+      "price": 13,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "酸辣开胃，粉条劲道，适合重口味。"
+    },
+    {
+      "id": "d7",
+      "windowId": "w4",
+      "name": "麻辣香锅",
+      "price": 24,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "自选配菜，麻辣鲜香，夜宵热门选择。"
+    },
+    {
+      "id": "d8",
+      "windowId": "w4",
+      "name": "水煮牛肉",
+      "price": 28,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "牛肉嫩滑，麻辣鲜香，川味正宗。"
+    },
+    {
+      "id": "d9",
+      "windowId": "w5",
+      "name": "豉汁排骨饭",
+      "price": 21,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "排骨入味，豉香浓郁，适合聚餐。"
+    },
+    {
+      "id": "d10",
+      "windowId": "w5",
+      "name": "清蒸鲈鱼饭",
+      "price": 26,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "鲈鱼鲜嫩，清淡爽口，营养丰富。"
+    },
+    {
+      "id": "d11",
+      "windowId": "w6",
+      "name": "营养鸡腿饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "营养餐",
+      "desc": "大鸡腿配蔬菜，营养均衡，出餐快。"
+    },
+    {
+      "id": "d12",
+      "windowId": "w6",
+      "name": "鸡胸肉沙拉",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "营养餐",
+      "desc": "鸡胸肉配生菜，低卡健康，适合减脂。"
+    },
+    {
+      "id": "d13",
+      "windowId": "w7",
+      "name": "云吞面",
+      "price": 13,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "云吞皮薄馅足，汤鲜味美，早餐首选。"
+    },
+    {
+      "id": "d14",
+      "windowId": "w7",
+      "name": "牛腩面",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "牛腩软烂，汤汁浓郁，面量充足。"
+    },
+    {
+      "id": "d15",
+      "windowId": "w8",
+      "name": "黑椒鸡扒饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "快餐",
+      "desc": "鸡扒外酥里嫩，黑椒味浓，性价比高。"
+    },
+    {
+      "id": "d16",
+      "windowId": "w8",
+      "name": "猪扒饭",
+      "price": 19,
+      "rating": null,
+      "heat": 0,
+      "tag": "快餐",
+      "desc": "猪扒厚实，肉质鲜嫩，搭配番茄酱。"
+    },
+    {
+      "id": "d17",
+      "windowId": "w9",
+      "name": "牛肉拉面",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "手工拉面，牛肉块大，汤头浓郁。"
+    },
+    {
+      "id": "d18",
+      "windowId": "w9",
+      "name": "羊肉泡馍",
+      "price": 22,
+      "rating": null,
+      "heat": 0,
+      "tag": "西北风味",
+      "desc": "馍块劲道，羊肉鲜美，西北风味。"
+    },
+    {
+      "id": "d19",
+      "windowId": "w10",
+      "name": "剁椒鱼块饭",
+      "price": 19,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "剁椒鲜香，鱼块嫩滑，辣味十足。"
+    },
+    {
+      "id": "d20",
+      "windowId": "w10",
+      "name": "回锅肉饭",
+      "price": 17,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "五花肉肥而不腻，蒜苗清香，川味经典。"
+    },
+    {
+      "id": "d21",
+      "windowId": "w11",
+      "name": "鲜肉小笼包",
+      "price": 10,
+      "rating": null,
+      "heat": 0,
+      "tag": "早餐",
+      "desc": "皮薄馅足，汤汁鲜美，早餐热门。"
+    },
+    {
+      "id": "d22",
+      "windowId": "w11",
+      "name": "油条豆浆",
+      "price": 6,
+      "rating": null,
+      "heat": 0,
+      "tag": "早餐",
+      "desc": "油条酥脆，豆浆香浓，传统早餐。"
+    },
+    {
+      "id": "d23",
+      "windowId": "w12",
+      "name": "牛腩汤粉",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "牛腩软烂，汤粉爽滑，味道鲜美。"
+    },
+    {
+      "id": "d24",
+      "windowId": "w12",
+      "name": "猪杂汤粉",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "猪杂新鲜，汤底清甜，粉Q弹。"
+    },
+    {
+      "id": "d25",
+      "windowId": "w13",
+      "name": "砂锅啫啫鸡",
+      "price": 23,
+      "rating": null,
+      "heat": 0,
+      "tag": "小炒",
+      "desc": "砂锅烹制，鸡肉嫩滑，锅气十足。"
+    },
+    {
+      "id": "d26",
+      "windowId": "w13",
+      "name": "小炒肉",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "小炒",
+      "desc": "五花肉配青椒，香辣下饭，人气高。"
+    },
+    {
+      "id": "d27",
+      "windowId": "w14",
+      "name": "烤鸡翅",
+      "price": 12,
+      "rating": null,
+      "heat": 0,
+      "tag": "夜宵",
+      "desc": "外焦里嫩，香气扑鼻，夜宵必备。"
+    },
+    {
+      "id": "d28",
+      "windowId": "w14",
+      "name": "炒田螺",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "夜宵",
+      "desc": "香辣入味，越吃越香，深夜解馋。"
+    }
+  ]
+}
