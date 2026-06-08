@@ -1,6 +1,27 @@
-# canteen-system
-SYSU Canteen Rating and Recommendation System
+# 中山大学食堂评价推荐系统
 
-Live site: https://howardyang33.github.io/canteen-system/
+在线访问地址：  
+https://howardyang33.github.io/canteen-system/
 
-This is a single-page web app for Sun Yat-sen University canteen browsing, rating, and recommendation. It supports canteen, window, and dish viewing, user reviews and reports, basic account login/registration, and data storage through JSON files hosted in the GitHub repository.
+这是一个面向中山大学校园食堂场景的网页系统，用于查看食堂、窗口和菜品信息，并结合用户评价提供推荐、排序与浏览功能。
+
+## 主要功能
+
+- 食堂浏览：按校区查看各食堂的基础信息、窗口分布和菜品内容
+- 评价查看：支持查看食堂、窗口、菜品的相关评价与评分
+- 智能推荐：根据校区、预算和偏好生成推荐结果
+- 相似推荐：支持从菜品出发查看相近菜品，并跳转到对应位置
+- 热门展示：首页展示综合评分排行、热门窗口和热门菜品
+- 账号系统：支持注册、登录与不同身份展示
+- 举报与管理：支持举报评价，管理员可查看评价记录、举报记录并维护数据
+
+## 系统特点
+
+- 采用单页网页应用形式，打开即可使用
+- 支持 GitHub Pages 部署，便于公开访问
+- 业务数据以 JSON 维护，便于整理和更新
+- 支持接入 Supabase 进行用户和系统数据存储
+
+## 适用场景
+
+适合用于课程作业、校园信息展示、食堂评价汇总与推荐系统演示，也适合作为前端页面、数据组织和轻量部署方案的综合实践项目。
