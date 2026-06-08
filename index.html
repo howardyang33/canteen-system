@@ -619,6 +619,15 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: rgba(255, 255, 255, 0.85);
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
+    }
+
+    .bar-item:hover {
+      transform: translateY(-1px);
+      border-color: rgba(7, 90, 52, 0.24);
+      background: #ffffff;
+      box-shadow: 0 8px 18px rgba(18, 34, 28, 0.08);
     }
 
     .bar-item>span {
@@ -3986,7 +3995,7 @@
       byId("rankingBars").innerHTML = sorted.slice(0, 6).map(item => {
         const score = scoreCanteen(item);
         return `
-          <div class="bar-item">
+          <div class="bar-item" onclick="openCanteenDetailForCanteens('${item.id}')" title="查看${item.name}详情">
             <span>${item.name}</span>
             <div class="bar-track">${renderStars(round(score))}</div>
             <strong>${round(score)}</strong>
