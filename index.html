@@ -3965,6 +3965,7 @@
       rememberSavedSections(payload);
       localStorage.setItem(storageKey, JSON.stringify(payload));
       state = structuredClone(payload);
+      markDerivedStateDirty();
       isUsingRemoteDatabase = true;
       updateDatabaseModeLabel();
       return payload;
@@ -4029,6 +4030,7 @@
     }
 
     function saveData() {
+      markDerivedStateDirty();
       const payload = normalizeAppData(state);
       localStorage.setItem(storageKey, JSON.stringify(payload));
 
@@ -4061,24 +4063,202 @@
       target.innerHTML = html;
     }
 
+    function createScoreBucket() {
+      return { taste: 0, hygiene: 0, cost: 0, service: 0, count: 0 };
+    }
+
+    function addReviewToBucket(bucket, review) {
+      if (!bucket || !review) return;
+      bucket.taste += Number(review.taste || 0);
+      bucket.hygiene += Number(review.hygiene || 0);
+      bucket.cost += Number(review.cost || 0);
+      bucket.service += Number(review.service || 0);
+      bucket.count += 1;
+    }
+
+    function bucketCategoryScore(bucket, category) {
+      return bucket && bucket.count > 0 ? bucket[category] / bucket.count : 0;
+    }
+
+    function bucketOverallScore(bucket) {
+      return bucket && bucket.count > 0
+        ? (bucket.taste + bucket.hygiene + bucket.cost + bucket.service) / (bucket.count * 4)
+        : 0;
+    }
+
+    function getMapArray(map, key) {
+      return map.get(key) || [];
+    }
+
+    let derivedStateDirty = true;
+    let derivedState = {
+      canteenById: new Map(),
+      windowById: new Map(),
+      dishById: new Map(),
+      windowsByCanteen: new Map(),
+      dishesByWindow: new Map(),
+      dishesByCanteen: new Map(),
+      reviewsByCanteen: new Map(),
+      reviewsByWindow: new Map(),
+      reviewsByDish: new Map(),
+      windowScoreBuckets: new Map(),
+      canteenScoreBuckets: new Map(),
+      dishScoreBuckets: new Map(),
+      windowAvgPrice: new Map(),
+      canteenAvgPrice: new Map(),
+      canteenDietTags: new Map(),
+      latestReviewByCanteen: new Map(),
+      campuses: ["全部"]
+    };
+
+    function markDerivedStateDirty() {
+      derivedStateDirty = true;
+    }
+
+    function rebuildDerivedState() {
+      const next = {
+        canteenById: new Map(),
+        windowById: new Map(),
+        dishById: new Map(),
+        windowsByCanteen: new Map(),
+        dishesByWindow: new Map(),
+        dishesByCanteen: new Map(),
+        reviewsByCanteen: new Map(),
+        reviewsByWindow: new Map(),
+        reviewsByDish: new Map(),
+        windowScoreBuckets: new Map(),
+        canteenScoreBuckets: new Map(),
+        dishScoreBuckets: new Map(),
+        windowAvgPrice: new Map(),
+        canteenAvgPrice: new Map(),
+        canteenDietTags: new Map(),
+        latestReviewByCanteen: new Map(),
+        campuses: ["全部"]
+      };
+
+      state.canteens.forEach(canteen => {
+        next.canteenById.set(canteen.id, canteen);
+        next.windowsByCanteen.set(canteen.id, []);
+        next.dishesByCanteen.set(canteen.id, []);
+        next.reviewsByCanteen.set(canteen.id, []);
+        next.canteenScoreBuckets.set(canteen.id, createScoreBucket());
+      });
+
+      state.windows.forEach(window => {
+        next.windowById.set(window.id, window);
+        next.dishesByWindow.set(window.id, []);
+        next.reviewsByWindow.set(window.id, []);
+        next.windowScoreBuckets.set(window.id, createScoreBucket());
+        if (!next.windowsByCanteen.has(window.canteenId)) next.windowsByCanteen.set(window.canteenId, []);
+        next.windowsByCanteen.get(window.canteenId).push(window);
+      });
+
+      state.dishes.forEach(dish => {
+        next.dishById.set(dish.id, dish);
+        next.reviewsByDish.set(dish.id, []);
+        next.dishScoreBuckets.set(dish.id, createScoreBucket());
+        if (!next.dishesByWindow.has(dish.windowId)) next.dishesByWindow.set(dish.windowId, []);
+        next.dishesByWindow.get(dish.windowId).push(dish);
+        const window = next.windowById.get(dish.windowId);
+        const canteenId = window?.canteenId;
+        if (canteenId) {
+          if (!next.dishesByCanteen.has(canteenId)) next.dishesByCanteen.set(canteenId, []);
+          next.dishesByCanteen.get(canteenId).push(dish);
+        }
+      });
+
+      state.reviews.forEach(review => {
+        if (review.canteenId) {
+          if (!next.reviewsByCanteen.has(review.canteenId)) next.reviewsByCanteen.set(review.canteenId, []);
+          next.reviewsByCanteen.get(review.canteenId).push(review);
+        }
+        if (review.windowId) {
+          if (!next.reviewsByWindow.has(review.windowId)) next.reviewsByWindow.set(review.windowId, []);
+          next.reviewsByWindow.get(review.windowId).push(review);
+        }
+        if (review.dishId) {
+          if (!next.reviewsByDish.has(review.dishId)) next.reviewsByDish.set(review.dishId, []);
+          next.reviewsByDish.get(review.dishId).push(review);
+        }
+      });
+
+      state.dishes.forEach(dish => {
+        const bucket = next.dishScoreBuckets.get(dish.id) || createScoreBucket();
+        getMapArray(next.reviewsByDish, dish.id).forEach(review => addReviewToBucket(bucket, review));
+        next.dishScoreBuckets.set(dish.id, bucket);
+      });
+
+      state.windows.forEach(window => {
+        const bucket = next.windowScoreBuckets.get(window.id) || createScoreBucket();
+        getMapArray(next.reviewsByWindow, window.id).forEach(review => addReviewToBucket(bucket, review));
+        getMapArray(next.dishesByWindow, window.id).forEach(dish => {
+          getMapArray(next.reviewsByDish, dish.id).forEach(review => addReviewToBucket(bucket, review));
+        });
+        const dishes = getMapArray(next.dishesByWindow, window.id);
+        if (dishes.length > 0) {
+          const totalPrice = dishes.reduce((sum, dish) => sum + Number(dish.price || 0), 0);
+          next.windowAvgPrice.set(window.id, totalPrice / dishes.length);
+        }
+        next.windowScoreBuckets.set(window.id, bucket);
+      });
+
+      state.canteens.forEach(canteen => {
+        const bucket = next.canteenScoreBuckets.get(canteen.id) || createScoreBucket();
+        getMapArray(next.reviewsByCanteen, canteen.id).forEach(review => addReviewToBucket(bucket, review));
+        getMapArray(next.windowsByCanteen, canteen.id).forEach(window => {
+          getMapArray(next.reviewsByWindow, window.id).forEach(review => addReviewToBucket(bucket, review));
+        });
+
+        const windowPrices = getMapArray(next.windowsByCanteen, canteen.id)
+          .map(window => next.windowAvgPrice.get(window.id))
+          .filter(price => price !== undefined && price !== null);
+        if (windowPrices.length > 0) {
+          next.canteenAvgPrice.set(canteen.id, windowPrices.reduce((sum, price) => sum + price, 0) / windowPrices.length);
+        }
+
+        const tags = getMapArray(next.dishesByCanteen, canteen.id).map(dish => dish.tag);
+        next.canteenDietTags.set(canteen.id, visibleDietTags(tags));
+
+        const latest = [...getMapArray(next.reviewsByCanteen, canteen.id)]
+          .sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+        if (latest) next.latestReviewByCanteen.set(canteen.id, latest);
+
+        next.canteenScoreBuckets.set(canteen.id, bucket);
+      });
+
+      next.campuses = ["全部", ...new Set(state.canteens.map(item => item.campus))];
+      derivedState = next;
+      derivedStateDirty = false;
+    }
+
+    function ensureDerivedStateReady() {
+      if (derivedStateDirty) {
+        rebuildDerivedState();
+      }
+    }
+
     function round(value, digits = 1) {
       return Number(value).toFixed(digits);
     }
 
     function canteenName(id) {
-      return state.canteens.find(item => item.id === id)?.name || "未知食堂";
+      ensureDerivedStateReady();
+      return derivedState.canteenById.get(id)?.name || "未知食堂";
     }
 
     function getCanteenCampus(canteenId) {
-      return state.canteens.find(item => item.id === canteenId)?.campus || "";
+      ensureDerivedStateReady();
+      return derivedState.canteenById.get(canteenId)?.campus || "";
     }
 
     function dishName(id) {
-      return state.dishes.find(item => item.id === id)?.name || "未选择菜品";
+      ensureDerivedStateReady();
+      return derivedState.dishById.get(id)?.name || "未选择菜品";
     }
 
     function reviewsForCanteen(id) {
-      return state.reviews.filter(item => item.canteenId === id);
+      ensureDerivedStateReady();
+      return getMapArray(derivedState.reviewsByCanteen, id);
     }
 
     function calculateReviewScore(review) {
@@ -4090,12 +4270,8 @@
     }
 
     function scoreDish(dish) {
-      const reviews = state.reviews.filter(item => item.dishId === dish.id);
-      if (!reviews.length) {
-        return 0;
-      }
-      const totalScore = reviews.reduce((sum, review) => sum + calculateReviewScore(review), 0);
-      return totalScore / reviews.length;
+      ensureDerivedStateReady();
+      return dish ? bucketOverallScore(derivedState.dishScoreBuckets.get(dish.id)) : 0;
     }
 
     function currentDishScore(dish) {
@@ -4104,88 +4280,58 @@
     }
 
     function scoreDishCategory(dishId, category) {
-      const reviews = state.reviews.filter(item => item.dishId === dishId);
-      if (reviews.length === 0) return 0;
-      const sum = reviews.reduce((acc, review) => acc + Number(review[category] || 0), 0);
-      return sum / reviews.length;
+      ensureDerivedStateReady();
+      return bucketCategoryScore(derivedState.dishScoreBuckets.get(dishId), category);
     }
 
     function calculateWindowAvgPrice(windowId) {
-      const dishes = state.dishes.filter(item => item.windowId === windowId);
-      if (dishes.length === 0) return null;
-      const totalPrice = dishes.reduce((sum, dish) => sum + Number(dish.price || 0), 0);
-      return totalPrice / dishes.length;
+      ensureDerivedStateReady();
+      return derivedState.windowAvgPrice.get(windowId) ?? null;
     }
 
     function calculateCanteenAvgPrice(canteenId) {
-      const windows = state.windows.filter(item => item.canteenId === canteenId);
-      if (windows.length === 0) return null;
-      let totalPrice = 0;
-      let count = 0;
-      for (const window of windows) {
-        const avgPrice = calculateWindowAvgPrice(window.id);
-        if (avgPrice !== null) {
-          totalPrice += avgPrice;
-          count++;
-        }
-      }
-      return count > 0 ? totalPrice / count : null;
+      ensureDerivedStateReady();
+      return derivedState.canteenAvgPrice.get(canteenId) ?? null;
     }
 
     // 获取窗口的所有评价（包括直接评价该窗口的评论和评价该窗口下菜品的评论）
     function getWindowReviews(windowId) {
-      const windowReviews = state.reviews.filter(item => item.windowId === windowId);
-      const dishReviews = state.reviews.filter(item => {
-        if (!item.dishId) return false;
-        const dish = state.dishes.find(d => d.id === item.dishId);
-        return dish && dish.windowId === windowId;
-      });
+      ensureDerivedStateReady();
+      const windowReviews = getMapArray(derivedState.reviewsByWindow, windowId);
+      const dishReviews = getMapArray(derivedState.dishesByWindow, windowId)
+        .flatMap(dish => getMapArray(derivedState.reviewsByDish, dish.id));
       return { windowReviews, dishReviews };
     }
 
     // 获取食堂的所有评价（包括直接评价该食堂的评论和评价该食堂下所有窗口的评论）
     function getCanteenReviews(canteenId) {
-      const canteenReviews = state.reviews.filter(item => item.canteenId === canteenId);
-      const windowReviews = state.reviews.filter(item => {
-        if (!item.windowId) return false;
-        const window = state.windows.find(w => w.id === item.windowId);
-        return window && window.canteenId === canteenId;
-      });
+      ensureDerivedStateReady();
+      const canteenReviews = getMapArray(derivedState.reviewsByCanteen, canteenId);
+      const windowReviews = getMapArray(derivedState.windowsByCanteen, canteenId)
+        .flatMap(window => getMapArray(derivedState.reviewsByWindow, window.id));
       return { canteenReviews, windowReviews };
     }
 
     // 计算窗口某项评分的平均值
     function scoreWindowCategory(windowId, category) {
-      const { windowReviews, dishReviews } = getWindowReviews(windowId);
-      const allReviews = [...windowReviews, ...dishReviews];
-      if (allReviews.length === 0) return 0;
-      const sum = allReviews.reduce((acc, review) => acc + Number(review[category] || 0), 0);
-      return sum / allReviews.length;
+      ensureDerivedStateReady();
+      return bucketCategoryScore(derivedState.windowScoreBuckets.get(windowId), category);
     }
 
     // 计算食堂某项评分的平均值
     function scoreCanteenCategory(canteenId, category) {
-      const { canteenReviews, windowReviews } = getCanteenReviews(canteenId);
-      const allReviews = [...canteenReviews, ...windowReviews];
-      if (allReviews.length === 0) return 0;
-      const sum = allReviews.reduce((acc, review) => acc + Number(review[category] || 0), 0);
-      return sum / allReviews.length;
+      ensureDerivedStateReady();
+      return bucketCategoryScore(derivedState.canteenScoreBuckets.get(canteenId), category);
     }
 
     function scoreWindow(window) {
-      const taste = scoreWindowCategory(window.id, 'taste');
-      const hygiene = scoreWindowCategory(window.id, 'hygiene');
-      const cost = scoreWindowCategory(window.id, 'cost');
-      const service = scoreWindowCategory(window.id, 'service');
-      return (taste + hygiene + cost + service) / 4;
+      ensureDerivedStateReady();
+      return window ? bucketOverallScore(derivedState.windowScoreBuckets.get(window.id)) : 0;
     }
 
     function scoreCanteen(canteen) {
-      const taste = scoreCanteenCategory(canteen.id, 'taste');
-      const hygiene = scoreCanteenCategory(canteen.id, 'hygiene');
-      const cost = scoreCanteenCategory(canteen.id, 'cost');
-      const service = scoreCanteenCategory(canteen.id, 'service');
-      return (taste + hygiene + cost + service) / 4;
+      ensureDerivedStateReady();
+      return canteen ? bucketOverallScore(derivedState.canteenScoreBuckets.get(canteen.id)) : 0;
     }
 
     function priceScore(price) {
@@ -4214,11 +4360,8 @@
     }
 
     function canteenDietTags(canteen) {
-      const canteenWindows = state.windows.filter(w => w.canteenId === canteen.id).map(w => w.id);
-      const dishTags = state.dishes
-        .filter(dish => canteenWindows.includes(dish.windowId))
-        .map(dish => dish.tag);
-      return visibleDietTags([...dishTags]);
+      ensureDerivedStateReady();
+      return derivedState.canteenDietTags.get(canteen.id) || [];
     }
 
     function dishDietTag(dish) {
@@ -4232,7 +4375,8 @@
     }
 
     function campuses() {
-      return ["全部", ...new Set(state.canteens.map(item => item.campus))];
+      ensureDerivedStateReady();
+      return derivedState.campuses;
     }
 
     function currentSearch() {
@@ -4303,15 +4447,34 @@
     }
 
     function render() {
+      ensureDerivedStateReady();
       renderSelects();
-      renderDashboard();
-      renderCanteens();
-      renderWeights();
-      renderRecommendations();
-      renderLottery();
-      renderReviews();
-      renderReports();
-      renderAdmin();
+      switch (currentView) {
+        case "dashboard":
+          renderDashboard();
+          break;
+        case "canteens":
+          renderCanteens();
+          break;
+        case "recommend":
+          renderWeights();
+          renderRecommendations();
+          break;
+        case "lottery":
+          renderLottery();
+          break;
+        case "reviews":
+          renderReviews();
+          break;
+        case "reports":
+          renderReports();
+          break;
+        case "admin":
+          renderAdmin();
+          break;
+        default:
+          renderDashboard();
+      }
     }
 
     function updateReviewCanteenFilter() {
@@ -5207,9 +5370,10 @@
     }
 
     function canteenCard(item) {
-      const canteenWindows = state.windows.filter(w => w.canteenId === item.id);
+      ensureDerivedStateReady();
+      const canteenWindows = [...getMapArray(derivedState.windowsByCanteen, item.id)];
       const topWindows = canteenWindows.sort((a, b) => scoreWindow(b) - scoreWindow(a)).slice(0, 2);
-      const latest = reviewsForCanteen(item.id).sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+      const latest = derivedState.latestReviewByCanteen.get(item.id);
       const tags = canteenDietTags(item);
       return `
         <article class="card canteen-card-hover" style="cursor: pointer; transition: all 0.2s ease;" data-canteen-detail-view="${item.id}" onclick="openCanteenDetailForCanteens('${item.id}')">
