@@ -515,6 +515,15 @@
       gap: 12px;
     }
 
+    .recommend-list {
+      max-height: min(68vh, 760px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      align-content: start;
+      padding-right: 4px;
+      scrollbar-gutter: stable;
+    }
+
     .dashboard-stack {
       display: grid;
       gap: 14px;
@@ -1392,6 +1401,14 @@
       padding: 28px 16px;
       border-radius: var(--radius);
       background: #f8faf8;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
+    }
+
+    .realtime-card-single:hover {
+      transform: translateY(-2px);
+      background: #ffffff;
+      box-shadow: 0 8px 18px rgba(18, 34, 28, 0.08);
     }
 
     .realtime-card-single .realtime-campus {
@@ -4230,13 +4247,19 @@
       if (filterCampus !== "全部") {
         canteens = canteens.filter(item => item.campus === filterCampus);
       }
-      const canteenIds = new Set(canteens.map(canteen => canteen.id));
       const canteenScoreMap = new Map(canteens.map(canteen => [canteen.id, scoreCanteen(canteen)]));
-      const windows = state.windows.filter(window => canteenIds.has(window.canteenId));
-      return windows
+      return canteens
+        .map(canteen => {
+          const topWindow = state.windows
+            .filter(window => window.canteenId === canteen.id)
+            .sort((a, b) => scoreWindow(b) - scoreWindow(a) || a.name.localeCompare(b.name, "zh-CN"))[0];
+          return topWindow || null;
+        })
+        .filter(Boolean)
         .sort((a, b) =>
-          (canteenScoreMap.get(b.canteenId) || 0) - (canteenScoreMap.get(a.canteenId) || 0)
-          || scoreWindow(b) - scoreWindow(a)
+          scoreWindow(b) - scoreWindow(a)
+          || (canteenScoreMap.get(b.canteenId) || 0) - (canteenScoreMap.get(a.canteenId) || 0)
+          || a.name.localeCompare(b.name, "zh-CN")
         )
         .slice(0, 5);
     }
@@ -4245,7 +4268,7 @@
       const canteenId = windowItem?.canteenId;
       const windowScore = scoreWindow(windowItem);
       return `
-        <article class="realtime-card-single">
+        <article class="realtime-card-single" onclick="openCanteenDetailForCanteens('${canteenId}', '${windowItem.id}')" title="查看${windowItem.name}详情">
           <span class="realtime-campus">${canteenId ? canteenName(canteenId) : ""}</span>
           <div class="realtime-dish-info">
             <span class="realtime-dish-name">${windowItem.name}</span>
@@ -7359,13 +7382,7 @@
     function updateDatabaseModeLabel() {
       const subtitle = document.querySelector(".brand-subtitle");
       if (!subtitle) return;
-      if (isSupabaseConfigured() && isUsingRemoteDatabase) {
-        subtitle.textContent = "SYSU Canteen Rating and Recommendation System · Supabase 数据模式";
-      } else if (!isSupabaseConfigured()) {
-        subtitle.textContent = "SYSU Canteen Rating and Recommendation System · 未配置 Supabase";
-      } else {
-        subtitle.textContent = "SYSU Canteen Rating and Recommendation System · 本地缓存模式";
-      }
+      subtitle.textContent = "SYSU Canteen Rating and Recommendation System";
     }
 
     window.replaceRemoteStateWithStaticSeed = replaceRemoteStateWithStaticSeed;
