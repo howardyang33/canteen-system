@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>中山大学食堂评价推荐系统（GitHub 数据版）</title>
+  <title>中山大学食堂评价推荐系统（Supabase 数据版）</title>
   <style>
     :root {
       --ink: #18221f;
@@ -2800,24 +2800,23 @@
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
     const storageKey = "sysu-canteen-recommendation-system-v6";
     const dataVersion = "2.0";
 
-    const GITHUB_CONFIG = {
-      owner: "howardyang33",
-      repo: "canteen-system",
-      branch: "main",
-      token: "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",
-      paths: {
-        canteens: "data/canteens.json",
-        reviews: "data/reviews.json",
-        reports: "data/reports.json",
-        users: "data/users.json"
-      }
+    const SUPABASE_CONFIG = {
+      url: "https://smminvhrrwrqluqcjuzd.supabase.co",
+      anonKey: "sb_publishable_8onAB4Z41EWAyTmZqqGrnQ_Dvba-pM9"
     };
 
-    const githubFileShas = {};
+    const SUPABASE_TABLES = {
+      state: "canteen_app_state",
+      users: "canteen_app_users"
+    };
+
+    const SUPABASE_STATE_ROW_ID = "default";
+    let supabaseClient = undefined;
     let isUsingRemoteDatabase = false;
     let remoteSaveQueue = Promise.resolve();
     let lastSavedSectionHashes = {
@@ -3327,42 +3326,60 @@
       admin: ["数据管理", "维护菜品库数据。"]
     };
 
-    function isGithubConfigured() {
-      return Boolean(
-        GITHUB_CONFIG.owner &&
-        GITHUB_CONFIG.repo &&
-        GITHUB_CONFIG.branch &&
-        GITHUB_CONFIG.token &&
-        !GITHUB_CONFIG.token.includes("PASTE_YOUR")
-      );
-    }
-
-    function githubApiUrl(path) {
-      return `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${encodeURIComponent(path).replace(/%2F/g, "/")}`;
-    }
-
-    function githubHeaders() {
-      const headers = {
-        "Accept": "application/vnd.github+json",
-        "X-GitHub-Api-Version": "2022-11-28"
-      };
-      if (isGithubConfigured()) {
-        headers.Authorization = `Bearer ${GITHUB_CONFIG.token}`;
+    function getSupabaseClient() {
+      if (supabaseClient !== undefined) {
+        return supabaseClient;
       }
-      return headers;
+
+      const { url, anonKey } = SUPABASE_CONFIG;
+      const isPlaceholderUrl = !url || url.includes("YOUR_PROJECT_REF");
+      const isPlaceholderKey = !anonKey || anonKey.includes("YOUR_SUPABASE");
+
+      if (isPlaceholderUrl || isPlaceholderKey) {
+        supabaseClient = null;
+        return supabaseClient;
+      }
+
+      if (!window.supabase || typeof window.supabase.createClient !== "function") {
+        console.error("Supabase JS SDK 加载失败。");
+        supabaseClient = null;
+        return supabaseClient;
+      }
+
+      supabaseClient = window.supabase.createClient(url, anonKey, {
+        auth: {
+          persistSession: false,
+          autoRefreshToken: false,
+          detectSessionInUrl: false
+        }
+      });
+      return supabaseClient;
     }
 
-    function encodeBase64Utf8(text) {
-      const bytes = new TextEncoder().encode(text);
-      let binary = "";
-      bytes.forEach(byte => binary += String.fromCharCode(byte));
-      return btoa(binary);
+    function isSupabaseConfigured() {
+      return Boolean(getSupabaseClient());
     }
 
-    function decodeBase64Utf8(content) {
-      const binary = atob(String(content || "").replace(/\s/g, ""));
-      const bytes = Uint8Array.from(binary, char => char.charCodeAt(0));
-      return new TextDecoder("utf-8").decode(bytes);
+    function normalizeSupabaseError(error, fallbackMessage) {
+      const message = String(error?.message || error?.details || fallbackMessage || "Supabase 请求失败");
+      if (
+        error?.code === "42501" ||
+        /row-level security/i.test(message) ||
+        /permission denied/i.test(message)
+      ) {
+        return new Error("Supabase 权限不足，请检查 RLS 策略或 API Key");
+      }
+      if (
+        error?.code === "PGRST301" ||
+        /invalid api key/i.test(message) ||
+        /jwt/i.test(message)
+      ) {
+        return new Error("Supabase Key 无效或配置错误");
+      }
+      if (error?.code === "23505") {
+        return new Error("用户名已存在");
+      }
+      return new Error(`${fallbackMessage}：${message}`);
     }
 
     function normalizeAppData(data) {
@@ -3450,157 +3467,122 @@
       return [...map.values()];
     }
 
-    function mergeUsersForCreate(remoteUsers, localUsers) {
-      const remoteNames = new Set((Array.isArray(remoteUsers) ? remoteUsers : [])
-        .map(user => user?.username)
-        .filter(Boolean));
-      const duplicated = (Array.isArray(localUsers) ? localUsers : [])
-        .some(user => user?.username && remoteNames.has(user.username));
-      if (duplicated) throw new Error("用户名已存在");
-      return mergeUsers(remoteUsers, localUsers);
-    }
-
-    async function readGithubJson(path, fallbackValue) {
-      const url = `${githubApiUrl(path)}?ref=${encodeURIComponent(GITHUB_CONFIG.branch)}`;
-      const response = await fetch(url, { headers: githubHeaders() });
-
-      if (response.status === 404) {
-        githubFileShas[path] = null;
-        return structuredClone(fallbackValue);
+    async function ensureRemoteStateRow(initialPayload) {
+      const client = getSupabaseClient();
+      if (!client) {
+        return structuredClone(initialPayload);
       }
 
-      if (!response.ok) {
-        const message = await response.text();
-        throw new Error(`读取 ${path} 失败：${response.status} ${message}`);
+      const { data, error } = await client
+        .from(SUPABASE_TABLES.state)
+        .select("payload")
+        .eq("id", SUPABASE_STATE_ROW_ID)
+        .maybeSingle();
+
+      if (error) {
+        throw normalizeSupabaseError(error, "读取 Supabase 状态失败");
       }
 
-      const file = await response.json();
-      githubFileShas[path] = file.sha;
-      return JSON.parse(decodeBase64Utf8(file.content));
-    }
-
-    async function writeGithubJson(path, value, message, mergeOnConflict = null) {
-      if (!isGithubConfigured()) {
-        throw new Error("GitHub Token 未配置，无法写入远程 JSON。");
+      if (data?.payload) {
+        return normalizeAppData(data.payload);
       }
 
-      const body = {
-        message,
-        branch: GITHUB_CONFIG.branch,
-        content: encodeBase64Utf8(JSON.stringify(value, null, 2))
-      };
-      if (githubFileShas[path]) body.sha = githubFileShas[path];
+      const normalizedInitial = normalizeAppData(initialPayload);
+      const { error: seedError } = await client
+        .from(SUPABASE_TABLES.state)
+        .upsert({
+          id: SUPABASE_STATE_ROW_ID,
+          payload: normalizedInitial,
+          updated_at: new Date().toISOString()
+        }, {
+          onConflict: "id"
+        });
 
-      const response = await fetch(githubApiUrl(path), {
-        method: "PUT",
-        headers: {
-          ...githubHeaders(),
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(body)
-      });
-
-      if (response.status === 409 && mergeOnConflict) {
-        const remoteValue = await readGithubJson(path, Array.isArray(value) ? [] : {});
-        const mergedValue = mergeOnConflict(remoteValue, value);
-        return writeGithubJson(path, mergedValue, message, null);
+      if (seedError) {
+        throw normalizeSupabaseError(seedError, "初始化 Supabase 状态失败");
       }
 
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`写入 ${path} 失败：${response.status} ${errorText}`);
-      }
-
-      const result = await response.json();
-      githubFileShas[path] = result.content?.sha || githubFileShas[path];
-      return result;
+      return normalizedInitial;
     }
 
     async function loadData() {
       try {
-        const [baseData, reviews, reports] = await Promise.all([
-          readGithubJson(GITHUB_CONFIG.paths.canteens, {
-            version: dataVersion,
-            canteens: defaultData.canteens,
-            windows: defaultData.windows,
-            dishes: defaultData.dishes
-          }),
-          readGithubJson(GITHUB_CONFIG.paths.reviews, defaultData.reviews),
-          readGithubJson(GITHUB_CONFIG.paths.reports, [])
-        ]);
+        const client = getSupabaseClient();
+        if (!client) {
+          isUsingRemoteDatabase = false;
+          return loadLocalData();
+        }
 
-        const remoteData = normalizeAppData({
-          ...baseData,
-          reviews,
-          reports
-        });
+        const remoteData = await ensureRemoteStateRow(defaultData);
         rememberSavedSections(remoteData);
         localStorage.setItem(storageKey, JSON.stringify(remoteData));
         isUsingRemoteDatabase = true;
         return remoteData;
       } catch (error) {
-        console.error("GitHub JSON 加载失败，已回退到本地数据：", error);
+        console.error("Supabase 数据加载失败，已回退到本地数据：", error);
         isUsingRemoteDatabase = false;
         return loadLocalData();
       }
     }
 
-    async function saveDataToGithub(payload) {
+    async function saveDataToSupabase(payload) {
+      const client = getSupabaseClient();
+      if (!client) {
+        throw new Error("Supabase 未配置，无法写入远程数据。");
+      }
+
       const baseData = appBaseData(payload);
       const nextBaseHash = sectionHash(comparableBaseData(baseData));
       const nextReviewsHash = sectionHash(payload.reviews || []);
       const nextReportsHash = sectionHash(payload.reports || []);
 
-      if (nextBaseHash !== lastSavedSectionHashes.base) {
-        await writeGithubJson(
-          GITHUB_CONFIG.paths.canteens,
-          baseData,
-          "Update canteen base data"
-        );
-        lastSavedSectionHashes.base = nextBaseHash;
+      const hasChanges =
+        nextBaseHash !== lastSavedSectionHashes.base ||
+        nextReviewsHash !== lastSavedSectionHashes.reviews ||
+        nextReportsHash !== lastSavedSectionHashes.reports;
+
+      if (!hasChanges) {
+        return;
       }
 
-      if (nextReviewsHash !== lastSavedSectionHashes.reviews) {
-        await writeGithubJson(
-          GITHUB_CONFIG.paths.reviews,
-          payload.reviews,
-          "Update canteen reviews",
-          mergeById
-        );
-        lastSavedSectionHashes.reviews = nextReviewsHash;
+      const normalizedPayload = normalizeAppData(payload);
+      const { error } = await client
+        .from(SUPABASE_TABLES.state)
+        .upsert({
+          id: SUPABASE_STATE_ROW_ID,
+          payload: normalizedPayload,
+          updated_at: new Date().toISOString()
+        }, {
+          onConflict: "id"
+        });
+
+      if (error) {
+        throw normalizeSupabaseError(error, "保存 Supabase 状态失败");
       }
 
-      if (nextReportsHash !== lastSavedSectionHashes.reports) {
-        await writeGithubJson(
-          GITHUB_CONFIG.paths.reports,
-          payload.reports,
-          "Update canteen reports",
-          mergeById
-        );
-        lastSavedSectionHashes.reports = nextReportsHash;
-      }
+      rememberSavedSections(normalizedPayload);
     }
 
     function saveData() {
       const payload = normalizeAppData(state);
       localStorage.setItem(storageKey, JSON.stringify(payload));
 
-      if (!isGithubConfigured()) {
+      if (!isSupabaseConfigured()) {
         isUsingRemoteDatabase = false;
         return Promise.resolve();
       }
 
       remoteSaveQueue = remoteSaveQueue
-        .then(() => saveDataToGithub(payload))
+        .then(() => saveDataToSupabase(payload))
         .then(() => {
           isUsingRemoteDatabase = true;
           updateDatabaseModeLabel();
         })
         .catch(error => {
-          console.error("GitHub JSON 保存失败：", error);
+          console.error("Supabase 数据保存失败：", error);
           isUsingRemoteDatabase = false;
           updateDatabaseModeLabel();
-          toast("GitHub 数据保存失败，已暂存到本地。");
+          toast("Supabase 数据保存失败，已暂存到本地。");
         });
 
       return remoteSaveQueue;
@@ -6697,35 +6679,51 @@
 
     async function getUsers() {
       try {
-        const users = await readGithubJson(GITHUB_CONFIG.paths.users, []);
+        const client = getSupabaseClient();
+        if (!client) {
+          return getLocalUsers();
+        }
+
+        const { data, error } = await client
+          .from(SUPABASE_TABLES.users)
+          .select("username, identity, password")
+          .order("created_at", { ascending: true });
+
+        if (error) {
+          throw normalizeSupabaseError(error, "读取 Supabase 用户失败");
+        }
+
+        const users = Array.isArray(data) ? data : [];
         saveUsers(users);
-        return Array.isArray(users) ? users : [];
+        return users;
       } catch (error) {
-        console.error("GitHub 用户数据读取失败，已回退到本地用户：", error);
+        console.error("Supabase 用户数据读取失败，已回退到本地用户：", error);
         return getLocalUsers();
       }
     }
 
     async function addUser(user) {
-      if (!isGithubConfigured()) {
+      if (!isSupabaseConfigured()) {
         const localUsers = getLocalUsers();
         const mergedLocalUsers = mergeUsers(localUsers, [user]);
         saveUsers(mergedLocalUsers);
         return;
       }
 
-      const remoteUsers = await readGithubJson(GITHUB_CONFIG.paths.users, []);
-      if (remoteUsers.some(item => item.username === user.username)) {
-        throw new Error("用户名已存在");
+      const client = getSupabaseClient();
+      const { error } = await client
+        .from(SUPABASE_TABLES.users)
+        .insert({
+          username: user.username,
+          identity: user.identity,
+          password: user.password
+        });
+
+      if (error) {
+        throw normalizeSupabaseError(error, "注册用户失败");
       }
 
-      await writeGithubJson(
-        GITHUB_CONFIG.paths.users,
-        mergeUsers(remoteUsers, [user]),
-        "Update canteen users",
-        mergeUsersForCreate
-      );
-      saveUsers(mergeUsers(remoteUsers, [user]));
+      saveUsers(mergeUsers(getLocalUsers(), [user]));
     }
 
     function getCurrentUser() {
@@ -6809,7 +6807,16 @@
         await addUser({ username, identity, password });
       } catch (error) {
         console.error("注册失败：", error);
-        errorEl.textContent = error.message === "用户名已存在" ? "用户名已存在" : "注册失败，请检查 GitHub Token 或 users.json";
+        if (error.message === "用户名已存在") {
+          errorEl.textContent = "用户名已存在";
+        } else if (
+          error.message === "Supabase 权限不足，请检查 RLS 策略或 API Key" ||
+          error.message === "Supabase Key 无效或配置错误"
+        ) {
+          errorEl.textContent = error.message;
+        } else {
+          errorEl.textContent = "注册失败，请检查 Supabase 配置或 users 表";
+        }
         errorEl.classList.add('show');
         return;
       }
@@ -6847,7 +6854,14 @@
         user = users.find(u => u.username === username && u.password === password);
       } catch (error) {
         console.error("登录失败：", error);
-        errorEl.textContent = '登录失败，请检查 GitHub 数据连接';
+        if (
+          error.message === "Supabase 权限不足，请检查 RLS 策略或 API Key" ||
+          error.message === "Supabase Key 无效或配置错误"
+        ) {
+          errorEl.textContent = error.message;
+        } else {
+          errorEl.textContent = '登录失败，请检查 Supabase 数据连接';
+        }
         errorEl.classList.add('show');
         return;
       }
@@ -6929,10 +6943,10 @@
     function updateDatabaseModeLabel() {
       const subtitle = document.querySelector(".brand-subtitle");
       if (!subtitle) return;
-      if (isGithubConfigured() && isUsingRemoteDatabase) {
-        subtitle.textContent = "SYSU Canteen Rating and Recommendation System · GitHub JSON 数据模式";
-      } else if (!isGithubConfigured()) {
-        subtitle.textContent = "SYSU Canteen Rating and Recommendation System · 未配置 GitHub Token";
+      if (isSupabaseConfigured() && isUsingRemoteDatabase) {
+        subtitle.textContent = "SYSU Canteen Rating and Recommendation System · Supabase 数据模式";
+      } else if (!isSupabaseConfigured()) {
+        subtitle.textContent = "SYSU Canteen Rating and Recommendation System · 未配置 Supabase";
       } else {
         subtitle.textContent = "SYSU Canteen Rating and Recommendation System · 本地缓存模式";
       }
