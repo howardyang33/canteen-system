@@ -3046,7 +3046,8 @@
     const STATIC_DATA_PATHS = {
       canteens: "data/canteens.json",
       reviews: "data/reviews.json",
-      reports: "data/reports.json"
+      reports: "data/reports.json",
+      users: "data/users.json"
     };
 
     const SUPABASE_STATE_ROW_ID = "default";
@@ -3726,6 +3727,73 @@
         console.error("静态 JSON 种子读取失败，已回退到页面内置数据：", error);
         return normalizeAppData(fallbackPayload);
       }
+    }
+
+    function normalizeStaticUsers(users) {
+      const map = new Map();
+      (Array.isArray(users) ? users : []).forEach(user => {
+        const username = String(user?.username || "").trim();
+        const password = String(user?.password || "").trim();
+        const identity = String(user?.identity || "学生").trim() || "学生";
+        if (!username || !password || username === BUILTIN_ADMIN_USER.username) {
+          return;
+        }
+        map.set(username, { username, identity, password });
+      });
+      return [...map.values()];
+    }
+
+    async function loadStaticUsersSeed(fallbackUsers = []) {
+      try {
+        const users = await fetchStaticJson(STATIC_DATA_PATHS.users);
+        return normalizeStaticUsers(users);
+      } catch (error) {
+        console.error("静态 users.json 读取失败，已回退到本地用户：", error);
+        return normalizeStaticUsers(fallbackUsers);
+      }
+    }
+
+    async function replaceRemoteUsersWithStaticSeed() {
+      const client = getSupabaseClient();
+      if (!client) {
+        throw new Error("Supabase 未配置，无法导入用户数据。");
+      }
+
+      const staticUsers = await loadStaticUsersSeed(getStoredLocalUsers());
+      const { data, error } = await client
+        .from(SUPABASE_TABLES.users)
+        .select("username, identity, password")
+        .order("created_at", { ascending: true });
+
+      if (error) {
+        throw normalizeSupabaseError(error, "读取 Supabase 用户失败");
+      }
+
+      const existingUsers = Array.isArray(data) ? data : [];
+      const existingUsernames = new Set(existingUsers.map(user => user.username));
+      const insertUsers = staticUsers.filter(user => !existingUsernames.has(user.username));
+
+      if (insertUsers.length > 0) {
+        const { error: insertError } = await client
+          .from(SUPABASE_TABLES.users)
+          .insert(insertUsers);
+
+        if (insertError) {
+          throw normalizeSupabaseError(insertError, "导入 users.json 到 Supabase 失败");
+        }
+      }
+
+      const mergedUsers = mergeUsers(existingUsers, insertUsers);
+      saveUsers(mergedUsers);
+      await ensureBuiltInAdminUser();
+      const hasBuiltInAdmin = mergedUsers.some(user => user.username === BUILTIN_ADMIN_USER.username);
+
+      return {
+        imported: insertUsers.length,
+        skippedExisting: staticUsers.length - insertUsers.length,
+        totalStaticUsers: staticUsers.length,
+        totalRemoteUsers: hasBuiltInAdmin ? mergedUsers.length : mergedUsers.length + 1
+      };
     }
 
     async function ensureRemoteStateRow(initialPayload) {
@@ -7436,6 +7504,7 @@
     }
 
     window.replaceRemoteStateWithStaticSeed = replaceRemoteStateWithStaticSeed;
+    window.replaceRemoteUsersWithStaticSeed = replaceRemoteUsersWithStaticSeed;
 
     async function initApp() {
       initStaticIcons();
