@@ -326,6 +326,498 @@
       "canteenId": "c8",
       "name": "夜宵窗口",
       "desc": "提供夜宵小吃，种类多样，适合深夜觅食。"
+    },
+    {
+      "id": "w15",
+      "canteenId": "c1",
+      "name": "粥粉面点",
+      "desc": "以粥、粉、面和广式点心为主，早晚餐时段都较稳。"
+    },
+    {
+      "id": "w16",
+      "canteenId": "c1",
+      "name": "西式简餐",
+      "desc": "提供鸡扒饭、意面和焗饭等简餐，适合换口味时选择。"
+    },
+    {
+      "id": "w17",
+      "canteenId": "c2",
+      "name": "自选快餐",
+      "desc": "提供标准套餐和家常配菜，出餐稳定，适合高频日常用餐。"
+    },
+    {
+      "id": "w18",
+      "canteenId": "c2",
+      "name": "烧味套餐",
+      "desc": "提供烧鸭、叉烧和卤味饭类，出餐快，午餐选择稳定。"
+    },
+    {
+      "id": "w19",
+      "canteenId": "c3",
+      "name": "南北面食",
+      "desc": "集合拉面、拌面和地方面食，热汤热面选择较多。"
+    },
+    {
+      "id": "w20",
+      "canteenId": "c3",
+      "name": "特色小炒",
+      "desc": "主打现炒热菜和下饭套餐，锅气足，适合午晚餐。"
+    },
+    {
+      "id": "w21",
+      "canteenId": "c3",
+      "name": "煲仔菜",
+      "desc": "提供煲仔饭和砂锅饭类，现做时间稍长但口味更足。"
+    },
+    {
+      "id": "w22",
+      "canteenId": "c4",
+      "name": "烧味套餐",
+      "desc": "提供烧鸭、叉烧和卤味饭类，出餐快，午餐选择稳定。"
+    },
+    {
+      "id": "w23",
+      "canteenId": "c4",
+      "name": "麻辣烫窗口",
+      "desc": "以麻辣汤底和自选食材为主，冬天和晚餐时段更受欢迎。"
+    },
+    {
+      "id": "w24",
+      "canteenId": "c5",
+      "name": "西式简餐",
+      "desc": "提供鸡扒饭、意面和焗饭等简餐，适合换口味时选择。"
+    },
+    {
+      "id": "w25",
+      "canteenId": "c5",
+      "name": "粤式小炒",
+      "desc": "以粤式热炒和煲仔类套餐为主，口味偏清鲜。"
+    },
+    {
+      "id": "w26",
+      "canteenId": "c6",
+      "name": "自选快餐",
+      "desc": "提供标准套餐和家常配菜，出餐稳定，适合高频日常用餐。"
+    },
+    {
+      "id": "w27",
+      "canteenId": "c6",
+      "name": "烧味卤味",
+      "desc": "提供烧鸭、叉烧和卤味饭类，出餐快，午餐选择稳定。"
+    },
+    {
+      "id": "w28",
+      "canteenId": "c6",
+      "name": "粉面粥档",
+      "desc": "提供粥品、汤粉和云吞面等热食，适合全天候快速就餐。"
+    },
+    {
+      "id": "w29",
+      "canteenId": "c7",
+      "name": "自选快餐",
+      "desc": "提供标准套餐和家常配菜，出餐稳定，适合高频日常用餐。"
+    },
+    {
+      "id": "w30",
+      "canteenId": "c7",
+      "name": "夜宵铁板",
+      "desc": "以铁板炒饭、炒面和热食小吃为主，夜间人气较高。"
+    },
+    {
+      "id": "w31",
+      "canteenId": "c8",
+      "name": "兰州拉面",
+      "desc": "主打现煮拉面和牛肉汤底，偏西北口味，饱腹感较强。"
+    },
+    {
+      "id": "w32",
+      "canteenId": "c8",
+      "name": "馍饭档口",
+      "desc": "提供拉面、泡馍和拌面等西北风味，适合想吃厚重口味时选择。"
+    },
+    {
+      "id": "w33",
+      "canteenId": "c9",
+      "name": "自选快餐",
+      "desc": "提供标准套餐和家常配菜，出餐稳定，适合高频日常用餐。"
+    },
+    {
+      "id": "w34",
+      "canteenId": "c9",
+      "name": "扒饭窗口",
+      "desc": "以鸡扒、猪扒和铁板饭类为主，出餐快，适合课间就餐。"
+    },
+    {
+      "id": "w35",
+      "canteenId": "c9",
+      "name": "面食窗口",
+      "desc": "以汤粉、米线和面条类为主，出餐较快，日常选择稳定。"
+    },
+    {
+      "id": "w36",
+      "canteenId": "c9",
+      "name": "潮汕风味",
+      "desc": "提供粿条、卤水和潮汕小食，适合想换口味时选择。"
+    },
+    {
+      "id": "w37",
+      "canteenId": "c10",
+      "name": "大众套餐",
+      "desc": "提供标准套餐和家常配菜，出餐稳定，适合高频日常用餐。"
+    },
+    {
+      "id": "w38",
+      "canteenId": "c10",
+      "name": "南北面食",
+      "desc": "集合拉面、拌面和地方面食，热汤热面选择较多。"
+    },
+    {
+      "id": "w39",
+      "canteenId": "c10",
+      "name": "特色小炒",
+      "desc": "主打现炒热菜和下饭套餐，锅气足，适合午晚餐。"
+    },
+    {
+      "id": "w40",
+      "canteenId": "c10",
+      "name": "煲仔菜",
+      "desc": "提供煲仔饭和砂锅饭类，现做时间稍长但口味更足。"
+    },
+    {
+      "id": "w41",
+      "canteenId": "c11",
+      "name": "套餐快餐",
+      "desc": "提供标准套餐和家常配菜，出餐稳定，适合高频日常用餐。"
+    },
+    {
+      "id": "w42",
+      "canteenId": "c11",
+      "name": "面食窗口",
+      "desc": "以汤粉、米线和面条类为主，出餐较快，日常选择稳定。"
+    },
+    {
+      "id": "w43",
+      "canteenId": "c11",
+      "name": "烧味卤味",
+      "desc": "提供烧鸭、叉烧和卤味饭类，出餐快，午餐选择稳定。"
+    },
+    {
+      "id": "w44",
+      "canteenId": "c11",
+      "name": "粥粉轻食",
+      "desc": "兼顾粥品、肠粉和轻食简餐，适合早晚餐与清淡口味。"
+    },
+    {
+      "id": "w45",
+      "canteenId": "c12",
+      "name": "川湘小炒",
+      "desc": "提供川湘系盖饭和热炒，整体偏香辣，下饭表现稳定。"
+    },
+    {
+      "id": "w46",
+      "canteenId": "c12",
+      "name": "铁板扒饭",
+      "desc": "以鸡扒、猪扒和铁板饭类为主，出餐快，适合课间就餐。"
+    },
+    {
+      "id": "w47",
+      "canteenId": "c12",
+      "name": "粉面档口",
+      "desc": "以汤粉、米线和面条类为主，出餐较快，日常选择稳定。"
+    },
+    {
+      "id": "w48",
+      "canteenId": "c12",
+      "name": "风味砂锅",
+      "desc": "砂锅热菜和保温套餐为主，适合晚餐时段选择。"
+    },
+    {
+      "id": "w49",
+      "canteenId": "c13",
+      "name": "自选快餐",
+      "desc": "提供标准套餐和家常配菜，出餐稳定，适合高频日常用餐。"
+    },
+    {
+      "id": "w50",
+      "canteenId": "c13",
+      "name": "烧味套餐",
+      "desc": "提供烧鸭、叉烧和卤味饭类，出餐快，午餐选择稳定。"
+    },
+    {
+      "id": "w51",
+      "canteenId": "c13",
+      "name": "面食窗口",
+      "desc": "以汤粉、米线和面条类为主，出餐较快，日常选择稳定。"
+    },
+    {
+      "id": "w52",
+      "canteenId": "c13",
+      "name": "早餐点心",
+      "desc": "供应包点、粥品和现做早点，适合早课前快速就餐。"
+    },
+    {
+      "id": "w53",
+      "canteenId": "c14",
+      "name": "大众套餐",
+      "desc": "提供标准套餐和家常配菜，出餐稳定，适合高频日常用餐。"
+    },
+    {
+      "id": "w54",
+      "canteenId": "c14",
+      "name": "粉面窗口",
+      "desc": "以汤粉、米线和面条类为主，出餐较快，日常选择稳定。"
+    },
+    {
+      "id": "w55",
+      "canteenId": "c14",
+      "name": "麻辣香锅",
+      "desc": "自选配菜和重口味热菜较多，适合多人拼单。"
+    },
+    {
+      "id": "w56",
+      "canteenId": "c14",
+      "name": "轻食沙拉",
+      "desc": "以沙拉、三明治和低油简餐为主，适合轻负担需求。"
+    },
+    {
+      "id": "w57",
+      "canteenId": "c15",
+      "name": "地方风味",
+      "desc": "集合不同地域口味的主食和热菜，适合换口味时选择。"
+    },
+    {
+      "id": "w58",
+      "canteenId": "c15",
+      "name": "砂锅小炒",
+      "desc": "主打现炒热菜和下饭套餐，锅气足，适合午晚餐。"
+    },
+    {
+      "id": "w59",
+      "canteenId": "c15",
+      "name": "面点夜宵",
+      "desc": "提供夜宵小吃和现炒主食，适合晚课或自习后补能。"
+    },
+    {
+      "id": "w60",
+      "canteenId": "c15",
+      "name": "木桶饭",
+      "desc": "以木桶饭和焖饭类套餐为主，口味浓郁，份量较足。"
+    },
+    {
+      "id": "w61",
+      "canteenId": "c16",
+      "name": "自选快餐",
+      "desc": "提供标准套餐和家常配菜，出餐稳定，适合高频日常用餐。"
+    },
+    {
+      "id": "w62",
+      "canteenId": "c16",
+      "name": "烧腊饭档",
+      "desc": "提供烧鸭、叉烧和卤味饭类，出餐快，午餐选择稳定。"
+    },
+    {
+      "id": "w63",
+      "canteenId": "c16",
+      "name": "面食窗口",
+      "desc": "以汤粉、米线和面条类为主，出餐较快，日常选择稳定。"
+    },
+    {
+      "id": "w64",
+      "canteenId": "c16",
+      "name": "麻辣烫",
+      "desc": "以麻辣汤底和自选食材为主，冬天和晚餐时段更受欢迎。"
+    },
+    {
+      "id": "w65",
+      "canteenId": "c17",
+      "name": "教工套餐",
+      "desc": "套餐搭配偏清淡和均衡，适合正式用餐和工作日午餐。"
+    },
+    {
+      "id": "w66",
+      "canteenId": "c17",
+      "name": "轻食沙拉",
+      "desc": "以沙拉、三明治和低油简餐为主，适合轻负担需求。"
+    },
+    {
+      "id": "w67",
+      "canteenId": "c17",
+      "name": "商务小炒",
+      "desc": "以现炒热菜和搭配套餐为主，环境和出品更偏教工用餐。"
+    },
+    {
+      "id": "w68",
+      "canteenId": "c17",
+      "name": "汤面窗口",
+      "desc": "以汤粉、米线和面条类为主，出餐较快，日常选择稳定。"
+    },
+    {
+      "id": "w69",
+      "canteenId": "c18",
+      "name": "早餐点心",
+      "desc": "供应包点、粥品和现做早点，适合早课前快速就餐。"
+    },
+    {
+      "id": "w70",
+      "canteenId": "c18",
+      "name": "西北风味",
+      "desc": "提供拉面、泡馍和拌面等西北风味，适合想吃厚重口味时选择。"
+    },
+    {
+      "id": "w71",
+      "canteenId": "c18",
+      "name": "自选快餐",
+      "desc": "提供标准套餐和家常配菜，出餐稳定，适合高频日常用餐。"
+    },
+    {
+      "id": "w72",
+      "canteenId": "c18",
+      "name": "冒菜麻辣烫",
+      "desc": "以冒菜和麻辣烫为主，口味偏重，适合晚餐和夜宵。"
+    },
+    {
+      "id": "w73",
+      "canteenId": "c19",
+      "name": "风味小炒",
+      "desc": "主打现炒热菜和下饭套餐，锅气足，适合午晚餐。"
+    },
+    {
+      "id": "w74",
+      "canteenId": "c19",
+      "name": "自选快餐",
+      "desc": "提供标准套餐和家常配菜，出餐稳定，适合高频日常用餐。"
+    },
+    {
+      "id": "w75",
+      "canteenId": "c19",
+      "name": "西式轻食",
+      "desc": "以沙拉、三明治和低油简餐为主，适合轻负担需求。"
+    },
+    {
+      "id": "w76",
+      "canteenId": "c19",
+      "name": "夜宵小吃",
+      "desc": "提供夜宵小吃和现炒主食，适合晚课或自习后补能。"
+    },
+    {
+      "id": "w77",
+      "canteenId": "c20",
+      "name": "清淡套餐",
+      "desc": "以蒸煮和少油套餐为主，适合想吃清淡一些的同学。"
+    },
+    {
+      "id": "w78",
+      "canteenId": "c20",
+      "name": "面食窗口",
+      "desc": "以汤粉、米线和面条类为主，出餐较快，日常选择稳定。"
+    },
+    {
+      "id": "w79",
+      "canteenId": "c20",
+      "name": "烧味快餐",
+      "desc": "提供烧鸭、叉烧和卤味饭类，出餐快，午餐选择稳定。"
+    },
+    {
+      "id": "w80",
+      "canteenId": "c20",
+      "name": "地道风味",
+      "desc": "集合不同地域口味的主食和热菜，适合换口味时选择。"
+    },
+    {
+      "id": "w81",
+      "canteenId": "c21",
+      "name": "自选快餐",
+      "desc": "提供标准套餐和家常配菜，出餐稳定，适合高频日常用餐。"
+    },
+    {
+      "id": "w82",
+      "canteenId": "c21",
+      "name": "鲜切牛肉饭",
+      "desc": "主打牛肉饭和肥牛套餐，肉量稳定，适合偏荤口味。"
+    },
+    {
+      "id": "w83",
+      "canteenId": "c21",
+      "name": "西式简餐",
+      "desc": "提供鸡扒饭、意面和焗饭等简餐，适合换口味时选择。"
+    },
+    {
+      "id": "w84",
+      "canteenId": "c21",
+      "name": "夜宵粥粉",
+      "desc": "晚间供应粥粉和炒面类，适合自习后补给。"
+    },
+    {
+      "id": "w85",
+      "canteenId": "c22",
+      "name": "自选快餐",
+      "desc": "提供标准套餐和家常配菜，出餐稳定，适合高频日常用餐。"
+    },
+    {
+      "id": "w86",
+      "canteenId": "c22",
+      "name": "砂锅麻辣烫",
+      "desc": "提供现煮砂锅和自选配菜，保温性好，晚餐人气较高。"
+    },
+    {
+      "id": "w87",
+      "canteenId": "c22",
+      "name": "粉面档口",
+      "desc": "以汤粉、米线和面条类为主，出餐较快，日常选择稳定。"
+    },
+    {
+      "id": "w88",
+      "canteenId": "c22",
+      "name": "烧味饭档",
+      "desc": "提供烧鸭、叉烧和卤味饭类，出餐快，午餐选择稳定。"
+    },
+    {
+      "id": "w89",
+      "canteenId": "c23",
+      "name": "粤式小炒",
+      "desc": "以粤式热炒和煲仔类套餐为主，口味偏清鲜。"
+    },
+    {
+      "id": "w90",
+      "canteenId": "c23",
+      "name": "烧味明档",
+      "desc": "提供烧鸭、叉烧和卤味饭类，出餐快，午餐选择稳定。"
+    },
+    {
+      "id": "w91",
+      "canteenId": "c23",
+      "name": "汤粉粥面",
+      "desc": "提供粥品、汤粉和云吞面等热食，适合全天候快速就餐。"
+    },
+    {
+      "id": "w92",
+      "canteenId": "c23",
+      "name": "西式简餐",
+      "desc": "提供鸡扒饭、意面和焗饭等简餐，适合换口味时选择。"
+    },
+    {
+      "id": "w93",
+      "canteenId": "c24",
+      "name": "潮汕风味",
+      "desc": "提供粿条、卤水和潮汕小食，适合想换口味时选择。"
+    },
+    {
+      "id": "w94",
+      "canteenId": "c24",
+      "name": "云南过桥米线",
+      "desc": "主打现烫米线和酸汤口味，热食稳定，适合午晚餐。"
+    },
+    {
+      "id": "w95",
+      "canteenId": "c24",
+      "name": "海南鸡饭",
+      "desc": "以鸡饭和东南亚风味套餐为主，口味偏清爽。"
+    },
+    {
+      "id": "w96",
+      "canteenId": "c24",
+      "name": "早餐窗口",
+      "desc": "供应包点、粥品和现做早点，适合早课前快速就餐。"
     }
   ],
   "dishes": [
@@ -608,6 +1100,2606 @@
       "heat": 0,
       "tag": "夜宵",
       "desc": "香辣入味，越吃越香，深夜解馋。"
+    },
+    {
+      "id": "d29",
+      "windowId": "w1",
+      "name": "烧鹅饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "烧鹅皮脆肉香，搭配时蔬和米饭，适合午餐。"
+    },
+    {
+      "id": "d30",
+      "windowId": "w2",
+      "name": "鱼香肉丝盖饭",
+      "price": 14,
+      "rating": null,
+      "heat": 0,
+      "tag": "家常菜",
+      "desc": "咸鲜微辣，配菜丰富，是常见的下饭选择。"
+    },
+    {
+      "id": "d31",
+      "windowId": "w3",
+      "name": "牛腩河粉",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "牛腩软烂入味，河粉顺滑，适合想吃热汤面的时段。"
+    },
+    {
+      "id": "d32",
+      "windowId": "w4",
+      "name": "辣子鸡饭",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "鸡块酥香，干辣椒提味明显，适合偏重口味的同学。"
+    },
+    {
+      "id": "d33",
+      "windowId": "w5",
+      "name": "白切鸡饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "鸡肉鲜嫩，口味偏清淡，适合日常稳定就餐。"
+    },
+    {
+      "id": "d34",
+      "windowId": "w6",
+      "name": "玉米虾仁饭",
+      "price": 17,
+      "rating": null,
+      "heat": 0,
+      "tag": "营养餐",
+      "desc": "玉米和虾仁搭配清爽，整体油盐较轻。"
+    },
+    {
+      "id": "d35",
+      "windowId": "w7",
+      "name": "炸酱面",
+      "price": 14,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "酱香浓郁，面条筋道，适合晚餐快速解决。"
+    },
+    {
+      "id": "d36",
+      "windowId": "w8",
+      "name": "奥尔良鸡扒饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "快餐",
+      "desc": "鸡扒外焦里嫩，甜辣口味明显，出餐速度较快。"
+    },
+    {
+      "id": "d37",
+      "windowId": "w9",
+      "name": "番茄牛腩拉面",
+      "price": 19,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "番茄汤底酸甜开胃，牛腩和拉面搭配稳定。"
+    },
+    {
+      "id": "d38",
+      "windowId": "w10",
+      "name": "麻婆豆腐饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "豆腐嫩滑，麻辣感适中，适合高性价比午餐。"
+    },
+    {
+      "id": "d39",
+      "windowId": "w11",
+      "name": "肠粉套餐",
+      "price": 9,
+      "rating": null,
+      "heat": 0,
+      "tag": "早餐",
+      "desc": "现做肠粉口感软滑，搭配豆浆适合早课前购买。"
+    },
+    {
+      "id": "d40",
+      "windowId": "w12",
+      "name": "肥牛汤粉",
+      "price": 19,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "肥牛片和清汤搭配顺口，适合作为晚餐热食。"
+    },
+    {
+      "id": "d41",
+      "windowId": "w13",
+      "name": "干锅花菜",
+      "price": 19,
+      "rating": null,
+      "heat": 0,
+      "tag": "小炒",
+      "desc": "花菜脆爽带锅气，配饭较稳，适合晚餐。"
+    },
+    {
+      "id": "d42",
+      "windowId": "w14",
+      "name": "铁板炒面",
+      "price": 14,
+      "rating": null,
+      "heat": 0,
+      "tag": "夜宵",
+      "desc": "铁板现炒，香气足，适合夜宵时段快速补给。"
+    },
+    {
+      "id": "d43",
+      "windowId": "w15",
+      "name": "皮蛋瘦肉粥",
+      "price": 8,
+      "rating": null,
+      "heat": 0,
+      "tag": "早餐",
+      "desc": "粥底顺滑，适合早晨或夜间想吃清淡时选择。"
+    },
+    {
+      "id": "d44",
+      "windowId": "w15",
+      "name": "鲜虾云吞面",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "云吞饱满，汤头清爽，适合作为全天候热食。"
+    },
+    {
+      "id": "d45",
+      "windowId": "w15",
+      "name": "牛肉肠粉",
+      "price": 12,
+      "rating": null,
+      "heat": 0,
+      "tag": "早餐",
+      "desc": "肠粉和牛肉搭配更有饱腹感，适合早课前购买。"
+    },
+    {
+      "id": "d46",
+      "windowId": "w16",
+      "name": "黑椒鸡扒饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "西餐",
+      "desc": "鸡扒外焦里嫩，黑椒味明显，接受度较高。"
+    },
+    {
+      "id": "d47",
+      "windowId": "w16",
+      "name": "肉酱意面",
+      "price": 19,
+      "rating": null,
+      "heat": 0,
+      "tag": "西餐",
+      "desc": "肉酱浓郁，意面偏耐饿，适合作为正餐。"
+    },
+    {
+      "id": "d48",
+      "windowId": "w16",
+      "name": "茄汁猪扒焗饭",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "西餐",
+      "desc": "焗饭更有饱腹感，适合想换口味的晚餐。"
+    },
+    {
+      "id": "d49",
+      "windowId": "w17",
+      "name": "香菇滑鸡饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "家常搭配稳定，适合高频日常就餐。"
+    },
+    {
+      "id": "d50",
+      "windowId": "w17",
+      "name": "梅菜扣肉饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "口味偏咸鲜，下饭表现稳定。"
+    },
+    {
+      "id": "d51",
+      "windowId": "w17",
+      "name": "西兰花鸡腿饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "荤素搭配更均衡，适合工作日午餐。"
+    },
+    {
+      "id": "d52",
+      "windowId": "w18",
+      "name": "叉烧饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "蜜汁叉烧咸甜平衡，出餐快，适合午餐高峰。"
+    },
+    {
+      "id": "d53",
+      "windowId": "w18",
+      "name": "烧鸭饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "鸭肉香气足，皮脂感明显，是常见烧味主食。"
+    },
+    {
+      "id": "d54",
+      "windowId": "w18",
+      "name": "烧鹅拼饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "双拼选择更丰富，适合想吃得更扎实时点。"
+    },
+    {
+      "id": "d55",
+      "windowId": "w19",
+      "name": "牛肉拉面",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "汤面稳定，饱腹感强，适合中午和晚餐。"
+    },
+    {
+      "id": "d56",
+      "windowId": "w19",
+      "name": "炸酱面",
+      "price": 14,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "酱香明显，出餐较快，适合课间就餐。"
+    },
+    {
+      "id": "d57",
+      "windowId": "w19",
+      "name": "刀削臊子面",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "刀削面更有嚼劲，适合想吃热面的时段。"
+    },
+    {
+      "id": "d58",
+      "windowId": "w20",
+      "name": "小炒肉饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "小炒",
+      "desc": "五花肉与青椒搭配常见，香辣下饭。"
+    },
+    {
+      "id": "d59",
+      "windowId": "w20",
+      "name": "砂锅啫啫鸡",
+      "price": 23,
+      "rating": null,
+      "heat": 0,
+      "tag": "小炒",
+      "desc": "砂锅保温性好，鸡肉嫩滑，适合作为主菜。"
+    },
+    {
+      "id": "d60",
+      "windowId": "w20",
+      "name": "干锅花菜",
+      "price": 19,
+      "rating": null,
+      "heat": 0,
+      "tag": "小炒",
+      "desc": "花菜脆爽，锅气明显，适合工作日午晚餐。"
+    },
+    {
+      "id": "d61",
+      "windowId": "w21",
+      "name": "腊味煲仔饭",
+      "price": 19,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "腊味香气足，锅巴感更明显，适合晚餐。"
+    },
+    {
+      "id": "d62",
+      "windowId": "w21",
+      "name": "香菇滑鸡煲仔饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "鸡肉嫩滑，米饭吸汁后更香。"
+    },
+    {
+      "id": "d63",
+      "windowId": "w21",
+      "name": "豉汁排骨煲仔饭",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "豉香和排骨组合稳定，是常见热卖款。"
+    },
+    {
+      "id": "d64",
+      "windowId": "w22",
+      "name": "叉烧饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "蜜汁叉烧咸甜平衡，出餐快，适合午餐高峰。"
+    },
+    {
+      "id": "d65",
+      "windowId": "w22",
+      "name": "烧鸭饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "鸭肉香气足，皮脂感明显，是常见烧味主食。"
+    },
+    {
+      "id": "d66",
+      "windowId": "w22",
+      "name": "烧鹅拼饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "双拼选择更丰富，适合想吃得更扎实时点。"
+    },
+    {
+      "id": "d67",
+      "windowId": "w23",
+      "name": "麻辣烫自选",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "可按偏好搭配食材，适合工作日快速解决晚餐。"
+    },
+    {
+      "id": "d68",
+      "windowId": "w23",
+      "name": "番茄肥牛麻辣烫",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "番茄底更柔和，适合大多数人口味。"
+    },
+    {
+      "id": "d69",
+      "windowId": "w23",
+      "name": "菌菇鱼豆腐麻辣烫",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "菌菇和豆制品搭配更轻负担，适合日常就餐。"
+    },
+    {
+      "id": "d70",
+      "windowId": "w24",
+      "name": "黑椒鸡扒饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "西餐",
+      "desc": "鸡扒外焦里嫩，黑椒味明显，接受度较高。"
+    },
+    {
+      "id": "d71",
+      "windowId": "w24",
+      "name": "肉酱意面",
+      "price": 19,
+      "rating": null,
+      "heat": 0,
+      "tag": "西餐",
+      "desc": "肉酱浓郁，意面偏耐饿，适合作为正餐。"
+    },
+    {
+      "id": "d72",
+      "windowId": "w24",
+      "name": "茄汁猪扒焗饭",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "西餐",
+      "desc": "焗饭更有饱腹感，适合想换口味的晚餐。"
+    },
+    {
+      "id": "d73",
+      "windowId": "w25",
+      "name": "豉汁排骨饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "豉汁香味明显，排骨入味，适合日常午餐。"
+    },
+    {
+      "id": "d74",
+      "windowId": "w25",
+      "name": "蒜香排骨饭",
+      "price": 19,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "蒜香浓郁，整体口味偏咸鲜，配饭稳定。"
+    },
+    {
+      "id": "d75",
+      "windowId": "w25",
+      "name": "啫啫鸡煲饭",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "砂锅热度足，鸡肉嫩滑，适合晚餐。"
+    },
+    {
+      "id": "d76",
+      "windowId": "w26",
+      "name": "香菇滑鸡饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "家常搭配稳定，适合高频日常就餐。"
+    },
+    {
+      "id": "d77",
+      "windowId": "w26",
+      "name": "梅菜扣肉饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "口味偏咸鲜，下饭表现稳定。"
+    },
+    {
+      "id": "d78",
+      "windowId": "w26",
+      "name": "西兰花鸡腿饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "荤素搭配更均衡，适合工作日午餐。"
+    },
+    {
+      "id": "d79",
+      "windowId": "w27",
+      "name": "叉烧饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "蜜汁叉烧咸甜平衡，出餐快，适合午餐高峰。"
+    },
+    {
+      "id": "d80",
+      "windowId": "w27",
+      "name": "烧鸭饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "鸭肉香气足，皮脂感明显，是常见烧味主食。"
+    },
+    {
+      "id": "d81",
+      "windowId": "w27",
+      "name": "烧鹅拼饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "双拼选择更丰富，适合想吃得更扎实时点。"
+    },
+    {
+      "id": "d82",
+      "windowId": "w28",
+      "name": "皮蛋瘦肉粥",
+      "price": 8,
+      "rating": null,
+      "heat": 0,
+      "tag": "早餐",
+      "desc": "粥底顺滑，适合早晚想吃清淡时选择。"
+    },
+    {
+      "id": "d83",
+      "windowId": "w28",
+      "name": "牛腩河粉",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "牛腩分量稳定，河粉入口顺滑，适合午晚餐。"
+    },
+    {
+      "id": "d84",
+      "windowId": "w28",
+      "name": "鲜虾云吞面",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "云吞和面条组合常见，整体口味偏清鲜。"
+    },
+    {
+      "id": "d85",
+      "windowId": "w29",
+      "name": "香菇滑鸡饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "家常搭配稳定，适合高频日常就餐。"
+    },
+    {
+      "id": "d86",
+      "windowId": "w29",
+      "name": "梅菜扣肉饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "口味偏咸鲜，下饭表现稳定。"
+    },
+    {
+      "id": "d87",
+      "windowId": "w29",
+      "name": "西兰花鸡腿饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "荤素搭配更均衡，适合工作日午餐。"
+    },
+    {
+      "id": "d88",
+      "windowId": "w30",
+      "name": "铁板鸡排炒饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "夜宵",
+      "desc": "现炒香气足，适合晚间补给。"
+    },
+    {
+      "id": "d89",
+      "windowId": "w30",
+      "name": "铁板鱿鱼饭",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "夜宵",
+      "desc": "鱿鱼和酱香搭配更适合重口味夜宵。"
+    },
+    {
+      "id": "d90",
+      "windowId": "w30",
+      "name": "铁板炒面",
+      "price": 14,
+      "rating": null,
+      "heat": 0,
+      "tag": "夜宵",
+      "desc": "出餐快，分量稳定，晚课后较好选择。"
+    },
+    {
+      "id": "d91",
+      "windowId": "w31",
+      "name": "牛肉拉面",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "西北风味",
+      "desc": "清汤牛肉和拉面是经典组合，稳定耐吃。"
+    },
+    {
+      "id": "d92",
+      "windowId": "w31",
+      "name": "酸菜牛肉面",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "西北风味",
+      "desc": "酸菜更开胃，适合午晚餐想吃热面时选择。"
+    },
+    {
+      "id": "d93",
+      "windowId": "w31",
+      "name": "番茄鸡蛋拉面",
+      "price": 14,
+      "rating": null,
+      "heat": 0,
+      "tag": "西北风味",
+      "desc": "番茄汤底更柔和，适合不想吃太重口味时点。"
+    },
+    {
+      "id": "d94",
+      "windowId": "w32",
+      "name": "肉夹馍套餐",
+      "price": 14,
+      "rating": null,
+      "heat": 0,
+      "tag": "西北风味",
+      "desc": "肉夹馍搭配小菜，适合快速解决一餐。"
+    },
+    {
+      "id": "d95",
+      "windowId": "w32",
+      "name": "羊肉泡馍",
+      "price": 22,
+      "rating": null,
+      "heat": 0,
+      "tag": "西北风味",
+      "desc": "羊肉味更足，适合作为饱腹型晚餐。"
+    },
+    {
+      "id": "d96",
+      "windowId": "w32",
+      "name": "孜然鸡丁拌面",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "西北风味",
+      "desc": "孜然和鸡丁搭配香气明显，适合换口味时点。"
+    },
+    {
+      "id": "d97",
+      "windowId": "w33",
+      "name": "香菇滑鸡饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "家常搭配稳定，适合高频日常就餐。"
+    },
+    {
+      "id": "d98",
+      "windowId": "w33",
+      "name": "梅菜扣肉饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "口味偏咸鲜，下饭表现稳定。"
+    },
+    {
+      "id": "d99",
+      "windowId": "w33",
+      "name": "西兰花鸡腿饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "荤素搭配更均衡，适合工作日午餐。"
+    },
+    {
+      "id": "d100",
+      "windowId": "w34",
+      "name": "黑椒鸡扒饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "快餐",
+      "desc": "鸡扒外酥里嫩，属于稳定的快餐主食。"
+    },
+    {
+      "id": "d101",
+      "windowId": "w34",
+      "name": "猪扒饭",
+      "price": 19,
+      "rating": null,
+      "heat": 0,
+      "tag": "快餐",
+      "desc": "猪扒厚实，茄汁搭配更常见，适合午餐。"
+    },
+    {
+      "id": "d102",
+      "windowId": "w34",
+      "name": "奥尔良鸡腿扒饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "快餐",
+      "desc": "甜辣口味明显，接受度高，出餐速度快。"
+    },
+    {
+      "id": "d103",
+      "windowId": "w35",
+      "name": "云吞面",
+      "price": 13,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "汤底清爽，云吞口感稳定，适合早晚餐。"
+    },
+    {
+      "id": "d104",
+      "windowId": "w35",
+      "name": "牛腩面",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "牛腩软烂，分量充足，适合午晚餐。"
+    },
+    {
+      "id": "d105",
+      "windowId": "w35",
+      "name": "炸酱面",
+      "price": 14,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "酱香浓郁，整体比较耐饿。"
+    },
+    {
+      "id": "d106",
+      "windowId": "w36",
+      "name": "潮汕牛肉粿条",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "汤底清爽，牛肉口感嫩，适合想吃热汤时选择。"
+    },
+    {
+      "id": "d107",
+      "windowId": "w36",
+      "name": "卤水拼盘饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "卤味组合稳定，咸香下饭，午餐接受度高。"
+    },
+    {
+      "id": "d108",
+      "windowId": "w36",
+      "name": "蚝仔烙套餐",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "蚝仔鲜味明显，适合作为换口味的主食套餐。"
+    },
+    {
+      "id": "d109",
+      "windowId": "w37",
+      "name": "香菇滑鸡饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "家常搭配稳定，适合高频日常就餐。"
+    },
+    {
+      "id": "d110",
+      "windowId": "w37",
+      "name": "梅菜扣肉饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "口味偏咸鲜，下饭表现稳定。"
+    },
+    {
+      "id": "d111",
+      "windowId": "w37",
+      "name": "西兰花鸡腿饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "荤素搭配更均衡，适合工作日午餐。"
+    },
+    {
+      "id": "d112",
+      "windowId": "w38",
+      "name": "牛肉拉面",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "汤面稳定，饱腹感强，适合中午和晚餐。"
+    },
+    {
+      "id": "d113",
+      "windowId": "w38",
+      "name": "炸酱面",
+      "price": 14,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "酱香明显，出餐较快，适合课间就餐。"
+    },
+    {
+      "id": "d114",
+      "windowId": "w38",
+      "name": "刀削臊子面",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "刀削面更有嚼劲，适合想吃热面的时段。"
+    },
+    {
+      "id": "d115",
+      "windowId": "w39",
+      "name": "小炒肉饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "小炒",
+      "desc": "五花肉与青椒搭配常见，香辣下饭。"
+    },
+    {
+      "id": "d116",
+      "windowId": "w39",
+      "name": "砂锅啫啫鸡",
+      "price": 23,
+      "rating": null,
+      "heat": 0,
+      "tag": "小炒",
+      "desc": "砂锅保温性好，鸡肉嫩滑，适合作为主菜。"
+    },
+    {
+      "id": "d117",
+      "windowId": "w39",
+      "name": "干锅花菜",
+      "price": 19,
+      "rating": null,
+      "heat": 0,
+      "tag": "小炒",
+      "desc": "花菜脆爽，锅气明显，适合工作日午晚餐。"
+    },
+    {
+      "id": "d118",
+      "windowId": "w40",
+      "name": "腊味煲仔饭",
+      "price": 19,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "腊味香气足，锅巴感更明显，适合晚餐。"
+    },
+    {
+      "id": "d119",
+      "windowId": "w40",
+      "name": "香菇滑鸡煲仔饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "鸡肉嫩滑，米饭吸汁后更香。"
+    },
+    {
+      "id": "d120",
+      "windowId": "w40",
+      "name": "豉汁排骨煲仔饭",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "豉香和排骨组合稳定，是常见热卖款。"
+    },
+    {
+      "id": "d121",
+      "windowId": "w41",
+      "name": "香菇滑鸡饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "家常搭配稳定，适合高频日常就餐。"
+    },
+    {
+      "id": "d122",
+      "windowId": "w41",
+      "name": "梅菜扣肉饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "口味偏咸鲜，下饭表现稳定。"
+    },
+    {
+      "id": "d123",
+      "windowId": "w41",
+      "name": "西兰花鸡腿饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "荤素搭配更均衡，适合工作日午餐。"
+    },
+    {
+      "id": "d124",
+      "windowId": "w42",
+      "name": "云吞面",
+      "price": 13,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "汤底清爽，云吞口感稳定，适合早晚餐。"
+    },
+    {
+      "id": "d125",
+      "windowId": "w42",
+      "name": "牛腩面",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "牛腩软烂，分量充足，适合午晚餐。"
+    },
+    {
+      "id": "d126",
+      "windowId": "w42",
+      "name": "炸酱面",
+      "price": 14,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "酱香浓郁，整体比较耐饿。"
+    },
+    {
+      "id": "d127",
+      "windowId": "w43",
+      "name": "叉烧饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "蜜汁叉烧咸甜平衡，出餐快，适合午餐高峰。"
+    },
+    {
+      "id": "d128",
+      "windowId": "w43",
+      "name": "烧鸭饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "鸭肉香气足，皮脂感明显，是常见烧味主食。"
+    },
+    {
+      "id": "d129",
+      "windowId": "w43",
+      "name": "烧鹅拼饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "双拼选择更丰富，适合想吃得更扎实时点。"
+    },
+    {
+      "id": "d130",
+      "windowId": "w44",
+      "name": "皮蛋瘦肉粥",
+      "price": 8,
+      "rating": null,
+      "heat": 0,
+      "tag": "早餐",
+      "desc": "粥底绵密，适合清淡口味和早晚餐时段。"
+    },
+    {
+      "id": "d131",
+      "windowId": "w44",
+      "name": "牛肉肠粉",
+      "price": 12,
+      "rating": null,
+      "heat": 0,
+      "tag": "早餐",
+      "desc": "牛肉和肠粉搭配更耐饿，适合早午餐。"
+    },
+    {
+      "id": "d132",
+      "windowId": "w44",
+      "name": "鸡胸藜麦沙拉",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "营养餐",
+      "desc": "轻负担组合更适合想控制热量的同学。"
+    },
+    {
+      "id": "d133",
+      "windowId": "w45",
+      "name": "回锅肉饭",
+      "price": 17,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "五花肉和蒜苗搭配经典，下饭表现稳定。"
+    },
+    {
+      "id": "d134",
+      "windowId": "w45",
+      "name": "剁椒鱼块饭",
+      "price": 19,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "剁椒香辣明显，鱼块鲜嫩，适合晚餐。"
+    },
+    {
+      "id": "d135",
+      "windowId": "w45",
+      "name": "小炒黄牛肉饭",
+      "price": 21,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "牛肉香气足，搭配青椒后整体很下饭。"
+    },
+    {
+      "id": "d136",
+      "windowId": "w46",
+      "name": "黑椒牛柳铁板饭",
+      "price": 22,
+      "rating": null,
+      "heat": 0,
+      "tag": "快餐",
+      "desc": "铁板保温性好，牛柳口感嫩，适合午晚餐。"
+    },
+    {
+      "id": "d137",
+      "windowId": "w46",
+      "name": "铁板鸡排饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "快餐",
+      "desc": "鸡排分量稳定，香气明显，适合课间就餐。"
+    },
+    {
+      "id": "d138",
+      "windowId": "w46",
+      "name": "铁板肥牛饭",
+      "price": 21,
+      "rating": null,
+      "heat": 0,
+      "tag": "快餐",
+      "desc": "肥牛更偏重口味，适合晚餐时选择。"
+    },
+    {
+      "id": "d139",
+      "windowId": "w47",
+      "name": "沙茶牛肉粉",
+      "price": 17,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "沙茶香味明显，米粉顺滑，适合午晚餐。"
+    },
+    {
+      "id": "d140",
+      "windowId": "w47",
+      "name": "牛腩河粉",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "牛腩软烂，河粉吸汤后更顺口。"
+    },
+    {
+      "id": "d141",
+      "windowId": "w47",
+      "name": "酸辣粉",
+      "price": 13,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "酸辣开胃，适合想吃重口味时选择。"
+    },
+    {
+      "id": "d142",
+      "windowId": "w48",
+      "name": "砂锅啫啫鸡",
+      "price": 23,
+      "rating": null,
+      "heat": 0,
+      "tag": "小炒",
+      "desc": "砂锅保温好，鸡肉口感嫩，适合作为晚餐。"
+    },
+    {
+      "id": "d143",
+      "windowId": "w48",
+      "name": "金针肥牛砂锅",
+      "price": 21,
+      "rating": null,
+      "heat": 0,
+      "tag": "小炒",
+      "desc": "肥牛和金针菇搭配稳定，整体香气明显。"
+    },
+    {
+      "id": "d144",
+      "windowId": "w48",
+      "name": "菌菇豆腐砂锅",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "小炒",
+      "desc": "菌菇和豆腐组合更清爽，适合日常就餐。"
+    },
+    {
+      "id": "d145",
+      "windowId": "w49",
+      "name": "香菇滑鸡饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "家常搭配稳定，适合高频日常就餐。"
+    },
+    {
+      "id": "d146",
+      "windowId": "w49",
+      "name": "梅菜扣肉饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "口味偏咸鲜，下饭表现稳定。"
+    },
+    {
+      "id": "d147",
+      "windowId": "w49",
+      "name": "西兰花鸡腿饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "荤素搭配更均衡，适合工作日午餐。"
+    },
+    {
+      "id": "d148",
+      "windowId": "w50",
+      "name": "叉烧饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "蜜汁叉烧咸甜平衡，出餐快，适合午餐高峰。"
+    },
+    {
+      "id": "d149",
+      "windowId": "w50",
+      "name": "烧鸭饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "鸭肉香气足，皮脂感明显，是常见烧味主食。"
+    },
+    {
+      "id": "d150",
+      "windowId": "w50",
+      "name": "烧鹅拼饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "双拼选择更丰富，适合想吃得更扎实时点。"
+    },
+    {
+      "id": "d151",
+      "windowId": "w51",
+      "name": "云吞面",
+      "price": 13,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "汤底清爽，云吞口感稳定，适合早晚餐。"
+    },
+    {
+      "id": "d152",
+      "windowId": "w51",
+      "name": "牛腩面",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "牛腩软烂，分量充足，适合午晚餐。"
+    },
+    {
+      "id": "d153",
+      "windowId": "w51",
+      "name": "炸酱面",
+      "price": 14,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "酱香浓郁，整体比较耐饿。"
+    },
+    {
+      "id": "d154",
+      "windowId": "w52",
+      "name": "鲜肉小笼包",
+      "price": 10,
+      "rating": null,
+      "heat": 0,
+      "tag": "早餐",
+      "desc": "皮薄馅足，适合早八前快速带走。"
+    },
+    {
+      "id": "d155",
+      "windowId": "w52",
+      "name": "肠粉套餐",
+      "price": 9,
+      "rating": null,
+      "heat": 0,
+      "tag": "早餐",
+      "desc": "现做肠粉口感软滑，是常见广式早餐组合。"
+    },
+    {
+      "id": "d156",
+      "windowId": "w52",
+      "name": "油条豆浆",
+      "price": 6,
+      "rating": null,
+      "heat": 0,
+      "tag": "早餐",
+      "desc": "经典早餐搭配，价格友好，购买效率高。"
+    },
+    {
+      "id": "d157",
+      "windowId": "w53",
+      "name": "香菇滑鸡饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "家常搭配稳定，适合高频日常就餐。"
+    },
+    {
+      "id": "d158",
+      "windowId": "w53",
+      "name": "梅菜扣肉饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "口味偏咸鲜，下饭表现稳定。"
+    },
+    {
+      "id": "d159",
+      "windowId": "w53",
+      "name": "西兰花鸡腿饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "荤素搭配更均衡，适合工作日午餐。"
+    },
+    {
+      "id": "d160",
+      "windowId": "w54",
+      "name": "沙茶牛肉粉",
+      "price": 17,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "沙茶香味明显，米粉顺滑，适合午晚餐。"
+    },
+    {
+      "id": "d161",
+      "windowId": "w54",
+      "name": "牛腩河粉",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "牛腩软烂，河粉吸汤后更顺口。"
+    },
+    {
+      "id": "d162",
+      "windowId": "w54",
+      "name": "酸辣粉",
+      "price": 13,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "酸辣开胃，适合想吃重口味时选择。"
+    },
+    {
+      "id": "d163",
+      "windowId": "w55",
+      "name": "麻辣香锅",
+      "price": 24,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "自选配菜丰富，香辣突出，适合多人拼单。"
+    },
+    {
+      "id": "d164",
+      "windowId": "w55",
+      "name": "手撕包菜香锅",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "锅气明显，价格友好，是常见配饭选择。"
+    },
+    {
+      "id": "d165",
+      "windowId": "w55",
+      "name": "肥牛香锅",
+      "price": 26,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "肥牛分量更足，适合偏荤口味的午晚餐。"
+    },
+    {
+      "id": "d166",
+      "windowId": "w56",
+      "name": "鸡胸肉凯撒沙拉",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "营养餐",
+      "desc": "鸡胸肉和生菜搭配基础稳定，适合减脂期。"
+    },
+    {
+      "id": "d167",
+      "windowId": "w56",
+      "name": "金枪鱼时蔬沙拉",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "营养餐",
+      "desc": "金枪鱼和时蔬组合更清爽，适合轻午餐。"
+    },
+    {
+      "id": "d168",
+      "windowId": "w56",
+      "name": "全麦鸡肉三明治",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "营养餐",
+      "desc": "全麦面包更有饱腹感，适合课间快速补能。"
+    },
+    {
+      "id": "d169",
+      "windowId": "w57",
+      "name": "沙茶牛肉炒河粉",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "沙茶香味明显，河粉顺滑，适合晚餐。"
+    },
+    {
+      "id": "d170",
+      "windowId": "w57",
+      "name": "台式卤肉饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "卤汁拌饭更下饭，是常见的高性价比选择。"
+    },
+    {
+      "id": "d171",
+      "windowId": "w57",
+      "name": "椒麻鸡腿饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "椒麻感适中，整体偏香，适合换口味时点。"
+    },
+    {
+      "id": "d172",
+      "windowId": "w58",
+      "name": "小炒肉饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "小炒",
+      "desc": "五花肉与青椒搭配常见，香辣下饭。"
+    },
+    {
+      "id": "d173",
+      "windowId": "w58",
+      "name": "砂锅啫啫鸡",
+      "price": 23,
+      "rating": null,
+      "heat": 0,
+      "tag": "小炒",
+      "desc": "砂锅保温性好，鸡肉嫩滑，适合作为主菜。"
+    },
+    {
+      "id": "d174",
+      "windowId": "w58",
+      "name": "干锅花菜",
+      "price": 19,
+      "rating": null,
+      "heat": 0,
+      "tag": "小炒",
+      "desc": "花菜脆爽，锅气明显，适合工作日午晚餐。"
+    },
+    {
+      "id": "d175",
+      "windowId": "w59",
+      "name": "烤鸡翅",
+      "price": 12,
+      "rating": null,
+      "heat": 0,
+      "tag": "夜宵",
+      "desc": "外焦里嫩，适合作为晚间加餐。"
+    },
+    {
+      "id": "d176",
+      "windowId": "w59",
+      "name": "铁板炒面",
+      "price": 14,
+      "rating": null,
+      "heat": 0,
+      "tag": "夜宵",
+      "desc": "炒面带镬气，适合夜宵时段快速补给。"
+    },
+    {
+      "id": "d177",
+      "windowId": "w59",
+      "name": "香辣鸡柳卷",
+      "price": 12,
+      "rating": null,
+      "heat": 0,
+      "tag": "夜宵",
+      "desc": "便于边走边吃，适合晚课后购买。"
+    },
+    {
+      "id": "d178",
+      "windowId": "w60",
+      "name": "黄焖鸡木桶饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "酱香浓郁，米饭吸汁后更下饭。"
+    },
+    {
+      "id": "d179",
+      "windowId": "w60",
+      "name": "腊味木桶饭",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "腊味香气足，适合作为晚餐主食。"
+    },
+    {
+      "id": "d180",
+      "windowId": "w60",
+      "name": "豉汁排骨木桶饭",
+      "price": 21,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "排骨和米饭一体出餐，整体较有饱腹感。"
+    },
+    {
+      "id": "d181",
+      "windowId": "w61",
+      "name": "香菇滑鸡饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "家常搭配稳定，适合高频日常就餐。"
+    },
+    {
+      "id": "d182",
+      "windowId": "w61",
+      "name": "梅菜扣肉饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "口味偏咸鲜，下饭表现稳定。"
+    },
+    {
+      "id": "d183",
+      "windowId": "w61",
+      "name": "西兰花鸡腿饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "荤素搭配更均衡，适合工作日午餐。"
+    },
+    {
+      "id": "d184",
+      "windowId": "w62",
+      "name": "叉烧饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "蜜汁叉烧咸甜平衡，出餐快，适合午餐高峰。"
+    },
+    {
+      "id": "d185",
+      "windowId": "w62",
+      "name": "烧鸭饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "鸭肉香气足，皮脂感明显，是常见烧味主食。"
+    },
+    {
+      "id": "d186",
+      "windowId": "w62",
+      "name": "烧鹅拼饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "双拼选择更丰富，适合想吃得更扎实时点。"
+    },
+    {
+      "id": "d187",
+      "windowId": "w63",
+      "name": "云吞面",
+      "price": 13,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "汤底清爽，云吞口感稳定，适合早晚餐。"
+    },
+    {
+      "id": "d188",
+      "windowId": "w63",
+      "name": "牛腩面",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "牛腩软烂，分量充足，适合午晚餐。"
+    },
+    {
+      "id": "d189",
+      "windowId": "w63",
+      "name": "炸酱面",
+      "price": 14,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "酱香浓郁，整体比较耐饿。"
+    },
+    {
+      "id": "d190",
+      "windowId": "w64",
+      "name": "麻辣烫自选",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "可按偏好搭配食材，适合工作日快速解决晚餐。"
+    },
+    {
+      "id": "d191",
+      "windowId": "w64",
+      "name": "番茄肥牛麻辣烫",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "番茄底更柔和，适合大多数人口味。"
+    },
+    {
+      "id": "d192",
+      "windowId": "w64",
+      "name": "菌菇鱼豆腐麻辣烫",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "菌菇和豆制品搭配更轻负担，适合日常就餐。"
+    },
+    {
+      "id": "d193",
+      "windowId": "w65",
+      "name": "清蒸鲈鱼饭",
+      "price": 24,
+      "rating": null,
+      "heat": 0,
+      "tag": "清淡",
+      "desc": "蒸制口味更轻，适合偏清淡的正式午餐。"
+    },
+    {
+      "id": "d194",
+      "windowId": "w65",
+      "name": "黑椒牛柳饭",
+      "price": 22,
+      "rating": null,
+      "heat": 0,
+      "tag": "清淡",
+      "desc": "黑椒调味适中，整体比重口热炒更稳。"
+    },
+    {
+      "id": "d195",
+      "windowId": "w65",
+      "name": "虾仁蒸蛋饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "清淡",
+      "desc": "蒸蛋口感柔软，适合作为轻负担套餐。"
+    },
+    {
+      "id": "d196",
+      "windowId": "w66",
+      "name": "鸡胸肉凯撒沙拉",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "营养餐",
+      "desc": "鸡胸肉和生菜搭配基础稳定，适合减脂期。"
+    },
+    {
+      "id": "d197",
+      "windowId": "w66",
+      "name": "金枪鱼时蔬沙拉",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "营养餐",
+      "desc": "金枪鱼和时蔬组合更清爽，适合轻午餐。"
+    },
+    {
+      "id": "d198",
+      "windowId": "w66",
+      "name": "全麦鸡肉三明治",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "营养餐",
+      "desc": "全麦面包更有饱腹感，适合课间快速补能。"
+    },
+    {
+      "id": "d199",
+      "windowId": "w67",
+      "name": "蒜香小排骨饭",
+      "price": 23,
+      "rating": null,
+      "heat": 0,
+      "tag": "小炒",
+      "desc": "排骨蒜香明显，适合作为稍正式一些的套餐。"
+    },
+    {
+      "id": "d200",
+      "windowId": "w67",
+      "name": "黑椒牛柳饭",
+      "price": 22,
+      "rating": null,
+      "heat": 0,
+      "tag": "小炒",
+      "desc": "牛柳口感嫩，黑椒风味突出，午餐接受度高。"
+    },
+    {
+      "id": "d201",
+      "windowId": "w67",
+      "name": "上汤时蔬牛肉饭",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "小炒",
+      "desc": "口味相对清爽，适合教工和学生日常用餐。"
+    },
+    {
+      "id": "d202",
+      "windowId": "w68",
+      "name": "鲜虾云吞面",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "云吞和热汤面组合稳定，适合全天候热食。"
+    },
+    {
+      "id": "d203",
+      "windowId": "w68",
+      "name": "番茄鸡蛋面",
+      "price": 12,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "番茄汤底温和，适合清淡口味。"
+    },
+    {
+      "id": "d204",
+      "windowId": "w68",
+      "name": "牛腩面",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "牛腩分量较足，适合作为晚餐。"
+    },
+    {
+      "id": "d205",
+      "windowId": "w69",
+      "name": "鲜肉小笼包",
+      "price": 10,
+      "rating": null,
+      "heat": 0,
+      "tag": "早餐",
+      "desc": "皮薄馅足，适合早八前快速带走。"
+    },
+    {
+      "id": "d206",
+      "windowId": "w69",
+      "name": "肠粉套餐",
+      "price": 9,
+      "rating": null,
+      "heat": 0,
+      "tag": "早餐",
+      "desc": "现做肠粉口感软滑，是常见广式早餐组合。"
+    },
+    {
+      "id": "d207",
+      "windowId": "w69",
+      "name": "油条豆浆",
+      "price": 6,
+      "rating": null,
+      "heat": 0,
+      "tag": "早餐",
+      "desc": "经典早餐搭配，价格友好，购买效率高。"
+    },
+    {
+      "id": "d208",
+      "windowId": "w70",
+      "name": "牛肉拉面",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "西北风味",
+      "desc": "牛肉和清汤搭配稳定，适合作为日常热面。"
+    },
+    {
+      "id": "d209",
+      "windowId": "w70",
+      "name": "羊肉泡馍",
+      "price": 22,
+      "rating": null,
+      "heat": 0,
+      "tag": "西北风味",
+      "desc": "馍块吸汤后更有饱腹感，适合晚餐。"
+    },
+    {
+      "id": "d210",
+      "windowId": "w70",
+      "name": "孜然羊肉拌面",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "西北风味",
+      "desc": "孜然香味明显，适合偏重口味同学。"
+    },
+    {
+      "id": "d211",
+      "windowId": "w71",
+      "name": "香菇滑鸡饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "家常搭配稳定，适合高频日常就餐。"
+    },
+    {
+      "id": "d212",
+      "windowId": "w71",
+      "name": "梅菜扣肉饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "口味偏咸鲜，下饭表现稳定。"
+    },
+    {
+      "id": "d213",
+      "windowId": "w71",
+      "name": "西兰花鸡腿饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "荤素搭配更均衡，适合工作日午餐。"
+    },
+    {
+      "id": "d214",
+      "windowId": "w72",
+      "name": "牛肉冒菜",
+      "price": 22,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "牛肉和时蔬组合常见，口味浓郁，晚餐热度较高。"
+    },
+    {
+      "id": "d215",
+      "windowId": "w72",
+      "name": "番茄肥牛麻辣烫",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "番茄底更柔和，适合不想吃太重辣味时选择。"
+    },
+    {
+      "id": "d216",
+      "windowId": "w72",
+      "name": "菌菇丸子麻辣烫",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "菌菇和丸子搭配饱腹感适中，适合作为晚餐。"
+    },
+    {
+      "id": "d217",
+      "windowId": "w73",
+      "name": "小炒黄牛肉饭",
+      "price": 21,
+      "rating": null,
+      "heat": 0,
+      "tag": "小炒",
+      "desc": "牛肉和青椒搭配经典，整体偏香辣。"
+    },
+    {
+      "id": "d218",
+      "windowId": "w73",
+      "name": "干锅花菜肉片",
+      "price": 19,
+      "rating": null,
+      "heat": 0,
+      "tag": "小炒",
+      "desc": "锅气明显，花菜爽脆，适合配饭。"
+    },
+    {
+      "id": "d219",
+      "windowId": "w73",
+      "name": "蒜香排骨饭",
+      "price": 19,
+      "rating": null,
+      "heat": 0,
+      "tag": "小炒",
+      "desc": "蒜香足，肉感明显，适合晚餐。"
+    },
+    {
+      "id": "d220",
+      "windowId": "w74",
+      "name": "香菇滑鸡饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "家常搭配稳定，适合高频日常就餐。"
+    },
+    {
+      "id": "d221",
+      "windowId": "w74",
+      "name": "梅菜扣肉饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "口味偏咸鲜，下饭表现稳定。"
+    },
+    {
+      "id": "d222",
+      "windowId": "w74",
+      "name": "西兰花鸡腿饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "荤素搭配更均衡，适合工作日午餐。"
+    },
+    {
+      "id": "d223",
+      "windowId": "w75",
+      "name": "鸡胸肉凯撒沙拉",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "营养餐",
+      "desc": "鸡胸肉和生菜搭配基础稳定，适合减脂期。"
+    },
+    {
+      "id": "d224",
+      "windowId": "w75",
+      "name": "金枪鱼时蔬沙拉",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "营养餐",
+      "desc": "金枪鱼和时蔬组合更清爽，适合轻午餐。"
+    },
+    {
+      "id": "d225",
+      "windowId": "w75",
+      "name": "全麦鸡肉三明治",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "营养餐",
+      "desc": "全麦面包更有饱腹感，适合课间快速补能。"
+    },
+    {
+      "id": "d226",
+      "windowId": "w76",
+      "name": "烤鸡翅",
+      "price": 12,
+      "rating": null,
+      "heat": 0,
+      "tag": "夜宵",
+      "desc": "外焦里嫩，适合作为晚间加餐。"
+    },
+    {
+      "id": "d227",
+      "windowId": "w76",
+      "name": "铁板炒面",
+      "price": 14,
+      "rating": null,
+      "heat": 0,
+      "tag": "夜宵",
+      "desc": "炒面带镬气，适合夜宵时段快速补给。"
+    },
+    {
+      "id": "d228",
+      "windowId": "w76",
+      "name": "香辣鸡柳卷",
+      "price": 12,
+      "rating": null,
+      "heat": 0,
+      "tag": "夜宵",
+      "desc": "便于边走边吃，适合晚课后购买。"
+    },
+    {
+      "id": "d229",
+      "windowId": "w77",
+      "name": "香菇滑鸡饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "清淡",
+      "desc": "调味较稳，适合工作日的常规午餐。"
+    },
+    {
+      "id": "d230",
+      "windowId": "w77",
+      "name": "虾仁蒸蛋饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "清淡",
+      "desc": "蒸蛋口感柔和，适合偏清淡需求。"
+    },
+    {
+      "id": "d231",
+      "windowId": "w77",
+      "name": "玉米排骨饭",
+      "price": 17,
+      "rating": null,
+      "heat": 0,
+      "tag": "清淡",
+      "desc": "玉米和排骨搭配更家常，整体负担较轻。"
+    },
+    {
+      "id": "d232",
+      "windowId": "w78",
+      "name": "云吞面",
+      "price": 13,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "汤底清爽，云吞口感稳定，适合早晚餐。"
+    },
+    {
+      "id": "d233",
+      "windowId": "w78",
+      "name": "牛腩面",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "牛腩软烂，分量充足，适合午晚餐。"
+    },
+    {
+      "id": "d234",
+      "windowId": "w78",
+      "name": "炸酱面",
+      "price": 14,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "酱香浓郁，整体比较耐饿。"
+    },
+    {
+      "id": "d235",
+      "windowId": "w79",
+      "name": "叉烧饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "蜜汁叉烧咸甜平衡，出餐快，适合午餐高峰。"
+    },
+    {
+      "id": "d236",
+      "windowId": "w79",
+      "name": "烧鸭饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "鸭肉香气足，皮脂感明显，是常见烧味主食。"
+    },
+    {
+      "id": "d237",
+      "windowId": "w79",
+      "name": "烧鹅拼饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "双拼选择更丰富，适合想吃得更扎实时点。"
+    },
+    {
+      "id": "d238",
+      "windowId": "w80",
+      "name": "沙茶牛肉炒河粉",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "沙茶香味明显，河粉顺滑，适合晚餐。"
+    },
+    {
+      "id": "d239",
+      "windowId": "w80",
+      "name": "台式卤肉饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "卤汁拌饭更下饭，是常见的高性价比选择。"
+    },
+    {
+      "id": "d240",
+      "windowId": "w80",
+      "name": "椒麻鸡腿饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "椒麻感适中，整体偏香，适合换口味时点。"
+    },
+    {
+      "id": "d241",
+      "windowId": "w81",
+      "name": "香菇滑鸡饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "家常搭配稳定，适合高频日常就餐。"
+    },
+    {
+      "id": "d242",
+      "windowId": "w81",
+      "name": "梅菜扣肉饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "口味偏咸鲜，下饭表现稳定。"
+    },
+    {
+      "id": "d243",
+      "windowId": "w81",
+      "name": "西兰花鸡腿饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "荤素搭配更均衡，适合工作日午餐。"
+    },
+    {
+      "id": "d244",
+      "windowId": "w82",
+      "name": "鲜切牛肉饭",
+      "price": 19,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "现炒牛肉搭配米饭，肉量稳定，适合重口味午餐。"
+    },
+    {
+      "id": "d245",
+      "windowId": "w82",
+      "name": "黑椒牛肉饭",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "黑椒香味浓，整体偏咸鲜，饱腹感较强。"
+    },
+    {
+      "id": "d246",
+      "windowId": "w82",
+      "name": "金针肥牛饭",
+      "price": 21,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "肥牛和金针菇搭配顺口，适合晚餐。"
+    },
+    {
+      "id": "d247",
+      "windowId": "w83",
+      "name": "黑椒鸡扒饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "西餐",
+      "desc": "鸡扒外焦里嫩，黑椒味明显，接受度较高。"
+    },
+    {
+      "id": "d248",
+      "windowId": "w83",
+      "name": "肉酱意面",
+      "price": 19,
+      "rating": null,
+      "heat": 0,
+      "tag": "西餐",
+      "desc": "肉酱浓郁，意面偏耐饿，适合作为正餐。"
+    },
+    {
+      "id": "d249",
+      "windowId": "w83",
+      "name": "茄汁猪扒焗饭",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "西餐",
+      "desc": "焗饭更有饱腹感，适合想换口味的晚餐。"
+    },
+    {
+      "id": "d250",
+      "windowId": "w84",
+      "name": "艇仔粥",
+      "price": 10,
+      "rating": null,
+      "heat": 0,
+      "tag": "夜宵",
+      "desc": "夜间吃起来负担较轻，适合作为加餐。"
+    },
+    {
+      "id": "d251",
+      "windowId": "w84",
+      "name": "牛杂汤粉",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "夜宵",
+      "desc": "热汤更适合晚间，饱腹感较强。"
+    },
+    {
+      "id": "d252",
+      "windowId": "w84",
+      "name": "干炒河粉",
+      "price": 14,
+      "rating": null,
+      "heat": 0,
+      "tag": "夜宵",
+      "desc": "现炒镬气明显，适合自习后快速补给。"
+    },
+    {
+      "id": "d253",
+      "windowId": "w85",
+      "name": "香菇滑鸡饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "家常搭配稳定，适合高频日常就餐。"
+    },
+    {
+      "id": "d254",
+      "windowId": "w85",
+      "name": "梅菜扣肉饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "口味偏咸鲜，下饭表现稳定。"
+    },
+    {
+      "id": "d255",
+      "windowId": "w85",
+      "name": "西兰花鸡腿饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "套餐",
+      "desc": "荤素搭配更均衡，适合工作日午餐。"
+    },
+    {
+      "id": "d256",
+      "windowId": "w86",
+      "name": "番茄肥牛麻辣烫",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "番茄汤底更易入口，肥牛和蔬菜搭配稳定。"
+    },
+    {
+      "id": "d257",
+      "windowId": "w86",
+      "name": "菌菇丸子麻辣烫",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "食材组合均衡，适合不想吃太辣时选择。"
+    },
+    {
+      "id": "d258",
+      "windowId": "w86",
+      "name": "川香牛肉麻辣烫",
+      "price": 22,
+      "rating": null,
+      "heat": 0,
+      "tag": "川湘",
+      "desc": "香辣感更明显，适合偏重口味的同学。"
+    },
+    {
+      "id": "d259",
+      "windowId": "w87",
+      "name": "沙茶牛肉粉",
+      "price": 17,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "沙茶香味明显，米粉顺滑，适合午晚餐。"
+    },
+    {
+      "id": "d260",
+      "windowId": "w87",
+      "name": "牛腩河粉",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "牛腩软烂，河粉吸汤后更顺口。"
+    },
+    {
+      "id": "d261",
+      "windowId": "w87",
+      "name": "酸辣粉",
+      "price": 13,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "酸辣开胃，适合想吃重口味时选择。"
+    },
+    {
+      "id": "d262",
+      "windowId": "w88",
+      "name": "叉烧饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "蜜汁叉烧咸甜平衡，出餐快，适合午餐高峰。"
+    },
+    {
+      "id": "d263",
+      "windowId": "w88",
+      "name": "烧鸭饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "鸭肉香气足，皮脂感明显，是常见烧味主食。"
+    },
+    {
+      "id": "d264",
+      "windowId": "w88",
+      "name": "烧鹅拼饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "双拼选择更丰富，适合想吃得更扎实时点。"
+    },
+    {
+      "id": "d265",
+      "windowId": "w89",
+      "name": "豉汁排骨饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "豉汁香味明显，排骨入味，适合日常午餐。"
+    },
+    {
+      "id": "d266",
+      "windowId": "w89",
+      "name": "蒜香排骨饭",
+      "price": 19,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "蒜香浓郁，整体口味偏咸鲜，配饭稳定。"
+    },
+    {
+      "id": "d267",
+      "windowId": "w89",
+      "name": "啫啫鸡煲饭",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "砂锅热度足，鸡肉嫩滑，适合晚餐。"
+    },
+    {
+      "id": "d268",
+      "windowId": "w90",
+      "name": "叉烧饭",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "蜜汁叉烧咸甜平衡，出餐快，适合午餐高峰。"
+    },
+    {
+      "id": "d269",
+      "windowId": "w90",
+      "name": "烧鸭饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "鸭肉香气足，皮脂感明显，是常见烧味主食。"
+    },
+    {
+      "id": "d270",
+      "windowId": "w90",
+      "name": "烧鹅拼饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "粤式",
+      "desc": "双拼选择更丰富，适合想吃得更扎实时点。"
+    },
+    {
+      "id": "d271",
+      "windowId": "w91",
+      "name": "皮蛋瘦肉粥",
+      "price": 8,
+      "rating": null,
+      "heat": 0,
+      "tag": "早餐",
+      "desc": "粥底顺滑，适合早晚想吃清淡时选择。"
+    },
+    {
+      "id": "d272",
+      "windowId": "w91",
+      "name": "牛腩河粉",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "牛腩分量稳定，河粉入口顺滑，适合午晚餐。"
+    },
+    {
+      "id": "d273",
+      "windowId": "w91",
+      "name": "鲜虾云吞面",
+      "price": 15,
+      "rating": null,
+      "heat": 0,
+      "tag": "面食",
+      "desc": "云吞和面条组合常见，整体口味偏清鲜。"
+    },
+    {
+      "id": "d274",
+      "windowId": "w92",
+      "name": "黑椒鸡扒饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "西餐",
+      "desc": "鸡扒外焦里嫩，黑椒味明显，接受度较高。"
+    },
+    {
+      "id": "d275",
+      "windowId": "w92",
+      "name": "肉酱意面",
+      "price": 19,
+      "rating": null,
+      "heat": 0,
+      "tag": "西餐",
+      "desc": "肉酱浓郁，意面偏耐饿，适合作为正餐。"
+    },
+    {
+      "id": "d276",
+      "windowId": "w92",
+      "name": "茄汁猪扒焗饭",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "西餐",
+      "desc": "焗饭更有饱腹感，适合想换口味的晚餐。"
+    },
+    {
+      "id": "d277",
+      "windowId": "w93",
+      "name": "潮汕牛肉粿条",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "汤底清爽，牛肉口感嫩，适合想吃热汤时选择。"
+    },
+    {
+      "id": "d278",
+      "windowId": "w93",
+      "name": "卤水拼盘饭",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "卤味组合稳定，咸香下饭，午餐接受度高。"
+    },
+    {
+      "id": "d279",
+      "windowId": "w93",
+      "name": "蚝仔烙套餐",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "蚝仔鲜味明显，适合作为换口味的主食套餐。"
+    },
+    {
+      "id": "d280",
+      "windowId": "w94",
+      "name": "原味过桥米线",
+      "price": 16,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "清汤底配多样配菜，口味温和，适合午晚餐。"
+    },
+    {
+      "id": "d281",
+      "windowId": "w94",
+      "name": "番茄肥牛米线",
+      "price": 19,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "番茄汤底酸甜开胃，肥牛和米线搭配稳定。"
+    },
+    {
+      "id": "d282",
+      "windowId": "w94",
+      "name": "酸汤鱼片米线",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "酸汤提味明显，鱼片鲜嫩，适合想换口味时选择。"
+    },
+    {
+      "id": "d283",
+      "windowId": "w95",
+      "name": "招牌海南鸡饭",
+      "price": 18,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "鸡肉鲜嫩，米饭带鸡油香，整体偏清爽。"
+    },
+    {
+      "id": "d284",
+      "windowId": "w95",
+      "name": "香茅鸡腿饭",
+      "price": 19,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "带轻微香料气息，适合想吃东南亚风味的同学。"
+    },
+    {
+      "id": "d285",
+      "windowId": "w95",
+      "name": "椰香鸡排饭",
+      "price": 20,
+      "rating": null,
+      "heat": 0,
+      "tag": "地道风味",
+      "desc": "甜香口感明显，搭配时蔬后整体比较顺口。"
+    },
+    {
+      "id": "d286",
+      "windowId": "w96",
+      "name": "鲜肉小笼包",
+      "price": 10,
+      "rating": null,
+      "heat": 0,
+      "tag": "早餐",
+      "desc": "皮薄馅足，适合早八前快速带走。"
+    },
+    {
+      "id": "d287",
+      "windowId": "w96",
+      "name": "肠粉套餐",
+      "price": 9,
+      "rating": null,
+      "heat": 0,
+      "tag": "早餐",
+      "desc": "现做肠粉口感软滑，是常见广式早餐组合。"
+    },
+    {
+      "id": "d288",
+      "windowId": "w96",
+      "name": "油条豆浆",
+      "price": 6,
+      "rating": null,
+      "heat": 0,
+      "tag": "早餐",
+      "desc": "经典早餐搭配，价格友好，购买效率高。"
     }
   ]
 }
