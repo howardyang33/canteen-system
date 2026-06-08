@@ -2147,7 +2147,6 @@
           <option value="">请选择身份</option>
           <option value="学生">学生</option>
           <option value="老师">老师</option>
-          <option value="系统管理员">系统管理员</option>
         </select>
       </div>
       <div class="auth-field">
@@ -7102,8 +7101,13 @@
     // ==================== 登录注册功能 ====================
     const USERS_KEY = 'sysu_canteen_users';
     const CURRENT_USER_KEY = 'sysu_canteen_current_user';
+    const BUILTIN_ADMIN_USER = Object.freeze({
+      username: "host",
+      identity: "系统管理员",
+      password: "666666"
+    });
 
-    function getLocalUsers() {
+    function getStoredLocalUsers() {
       try {
         const data = localStorage.getItem(USERS_KEY);
         return data ? JSON.parse(data) : [];
@@ -7112,8 +7116,49 @@
       }
     }
 
+    function withBuiltInAdmin(users) {
+      return mergeUsers(Array.isArray(users) ? users : [], [BUILTIN_ADMIN_USER]);
+    }
+
+    function getLocalUsers() {
+      return withBuiltInAdmin(getStoredLocalUsers());
+    }
+
     function saveUsers(users) {
-      localStorage.setItem(USERS_KEY, JSON.stringify(users));
+      const sanitizedUsers = (Array.isArray(users) ? users : [])
+        .filter(user => user && user.username && user.username !== BUILTIN_ADMIN_USER.username);
+      localStorage.setItem(USERS_KEY, JSON.stringify(sanitizedUsers));
+    }
+
+    async function ensureBuiltInAdminUser() {
+      const client = getSupabaseClient();
+      if (!client) {
+        return;
+      }
+
+      try {
+        const { data, error } = await client
+          .from(SUPABASE_TABLES.users)
+          .select("username")
+          .eq("username", BUILTIN_ADMIN_USER.username)
+          .limit(1);
+
+        if (error) {
+          throw normalizeSupabaseError(error, "读取内置管理员账号失败");
+        }
+
+        if (!Array.isArray(data) || data.length === 0) {
+          const { error: insertError } = await client
+            .from(SUPABASE_TABLES.users)
+            .insert(BUILTIN_ADMIN_USER);
+
+          if (insertError) {
+            throw normalizeSupabaseError(insertError, "写入内置管理员账号失败");
+          }
+        }
+      } catch (error) {
+        console.warn("内置管理员账号同步失败：", error);
+      }
     }
 
     async function getUsers() {
@@ -7132,7 +7177,7 @@
           throw normalizeSupabaseError(error, "读取 Supabase 用户失败");
         }
 
-        const users = Array.isArray(data) ? data : [];
+        const users = withBuiltInAdmin(Array.isArray(data) ? data : []);
         saveUsers(users);
         return users;
       } catch (error) {
@@ -7143,7 +7188,7 @@
 
     async function addUser(user) {
       if (!isSupabaseConfigured()) {
-        const localUsers = getLocalUsers();
+        const localUsers = getStoredLocalUsers();
         const mergedLocalUsers = mergeUsers(localUsers, [user]);
         saveUsers(mergedLocalUsers);
         return;
@@ -7162,7 +7207,7 @@
         throw normalizeSupabaseError(error, "注册用户失败");
       }
 
-      saveUsers(mergeUsers(getLocalUsers(), [user]));
+      saveUsers(mergeUsers(getStoredLocalUsers(), [user]));
     }
 
     function getCurrentUser() {
@@ -7215,6 +7260,11 @@
       }
       if (!identity) {
         errorEl.textContent = '请选择身份';
+        errorEl.classList.add('show');
+        return;
+      }
+      if (identity === '系统管理员') {
+        errorEl.textContent = '系统管理员账号不可自行注册';
         errorEl.classList.add('show');
         return;
       }
@@ -7393,6 +7443,7 @@
       byId("openReviewBtn").style.display = "none";
       state = await loadData();
       updateDatabaseModeLabel();
+      await ensureBuiltInAdminUser();
       checkAuth();
       render();
     }
