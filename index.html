@@ -1503,6 +1503,139 @@
       box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
     }
 
+    .section-filter {
+      min-width: 150px;
+      display: grid;
+      gap: 6px;
+    }
+
+    .section-filter label {
+      color: #5c6b64;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .section-filter select {
+      width: 100%;
+      min-height: 38px;
+      padding: 0 34px 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 13px;
+      outline: none;
+      box-shadow: inset 0 1px 0 rgba(14, 35, 26, 0.03);
+    }
+
+    .section-filter select:focus {
+      border-color: var(--green-2);
+      box-shadow: 0 0 0 3px rgba(15, 123, 77, 0.14);
+    }
+
+    .similar-modal-body {
+      padding: 18px;
+    }
+
+    .similar-source-card {
+      padding: 16px;
+      border: 1px solid rgba(7, 90, 52, 0.08);
+      border-radius: 12px;
+      background: linear-gradient(180deg, #f7faf8 0%, #f2f6f3 100%);
+    }
+
+    .similar-source-card p {
+      margin: 0;
+    }
+
+    .similar-tab-wrap {
+      margin-bottom: 14px;
+    }
+
+    .similar-tab-switch {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 4px;
+    }
+
+    .similar-tab-switch button {
+      min-height: 42px;
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-weight: 700;
+    }
+
+    .similar-tab-switch button strong {
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(49, 81, 67, 0.08);
+      color: inherit;
+      font-size: 12px;
+      line-height: 1;
+    }
+
+    .similar-tab-switch button.active strong {
+      background: #e8f1ec;
+      color: var(--green);
+    }
+
+    .similar-tab-note {
+      margin: 10px 2px 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .similar-dish-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .similar-dish-grid .empty {
+      grid-column: 1 / -1;
+    }
+
+    .similar-dish-card {
+      height: 100%;
+      padding: 16px;
+      gap: 10px;
+    }
+
+    .similar-dish-card .media-row {
+      grid-template-columns: 60px minmax(0, 1fr);
+      align-items: start;
+    }
+
+    .similar-dish-card .food-art {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+    }
+
+    .similar-dish-card .score {
+      min-width: 48px;
+      font-size: 18px;
+    }
+
+    .similar-dish-meta {
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .similar-dish-desc {
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
     .empty {
       padding: 28px 16px;
       text-align: center;
@@ -1705,6 +1838,19 @@
         grid-template-columns: minmax(150px, 1fr) minmax(90px, 0.85fr) 44px;
         gap: 10px;
         font-size: 14px;
+      }
+
+      .section-filter {
+        min-width: 100%;
+      }
+
+      .similar-dish-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .similar-tab-switch button {
+        min-height: 40px;
+        padding: 0 12px;
       }
     }
 
@@ -2070,7 +2216,7 @@
                   <h3>各食堂最受欢迎窗口</h3>
                   <span>按各食堂综合评分最高窗口生成</span>
                 </div>
-                <div class="field" style="margin:0;">
+                <div class="section-filter">
                   <label for="recommendCampusFilter">校区</label>
                   <select id="recommendCampusFilter">
                     <option value="全部">全部</option>
@@ -2089,7 +2235,18 @@
               <div class="section-head">
                 <div>
                   <h3>热门菜品推荐</h3>
-                  <span>按近期评分排序，涵盖所有食堂</span>
+                  <span>按近期评分排序，可按校区筛选</span>
+                </div>
+                <div class="section-filter">
+                  <label for="hotDishCampusFilter">校区</label>
+                  <select id="hotDishCampusFilter">
+                    <option value="全部">全部</option>
+                    <option value="广州南校园">广州南校园</option>
+                    <option value="广州北校园">广州北校园</option>
+                    <option value="广州东校园">广州东校园</option>
+                    <option value="珠海校区">珠海校区</option>
+                    <option value="深圳校区">深圳校区</option>
+                  </select>
                 </div>
               </div>
               <div class="dish-list vertical-dish-list" id="hotDishList"></div>
@@ -2813,9 +2970,10 @@
         <h3>相似菜品推荐</h3>
         <button class="icon-button" id="closeSimilarDishModal" title="关闭"></button>
       </div>
-      <div style="padding: 16px;">
+      <div class="similar-modal-body">
         <div id="similarDishSource" style="margin-bottom: 16px;"></div>
-        <div id="similarDishList"></div>
+        <div id="similarDishTabs"></div>
+        <div id="similarDishList" class="similar-dish-grid"></div>
       </div>
     </div>
   </div>
@@ -4022,15 +4180,23 @@
         `;
       }).join("");
 
-      const hot = [...state.dishes]
-        .sort((a, b) => scoreDish(b) - scoreDish(a))
-        .slice(0, 4);
-      byId("hotDishList").innerHTML = hot.map(dish => dishCard(dish)).join("");
-
       const recommendCampusFilter = byId("recommendCampusFilter").value || "全部";
       byId("todayRecommendations").innerHTML = getRealtimeRecommendations(recommendCampusFilter)
         .map(realtimeRecommendationCard)
         .join("");
+
+      const hotDishCampusFilter = byId("hotDishCampusFilter").value || "全部";
+      const hot = [...state.dishes]
+        .filter(dish => {
+          if (hotDishCampusFilter === "全部") return true;
+          const { canteenItem } = getDishLocationContext(dish);
+          return canteenItem?.campus === hotDishCampusFilter;
+        })
+        .sort((a, b) => scoreDish(b) - scoreDish(a))
+        .slice(0, 4);
+      byId("hotDishList").innerHTML = hot.length
+        ? hot.map(dish => dishCard(dish)).join("")
+        : `<div class="empty">当前校区暂无热门菜品。</div>`;
     }
 
     function getRealtimeRecommendations(filterCampus = "全部") {
@@ -5565,10 +5731,11 @@
       const { windowItem, canteenItem } = getDishLocationContext(dish);
       const dishScore = currentDishScore(dish);
       const canOpenDetail = Boolean(canteenItem && windowItem);
+      const tag = dishDietTag(dish);
       return `
         <article
-          class="card recommend-card"
-          style="margin-bottom: 12px; ${canOpenDetail ? "cursor: pointer;" : ""}"
+          class="card recommend-card similar-dish-card"
+          style="${canOpenDetail ? "cursor: pointer;" : ""}"
           ${canOpenDetail ? `onclick="closeSimilarDishModal(); openCanteenDetailForCanteens('${canteenItem.id}', '${windowItem.id}', '${dish.id}')"` : ""}
           ${canOpenDetail ? `title="查看${dish.name}详情"` : ""}
         >
@@ -5578,34 +5745,74 @@
               <div class="card-row">
                 <div>
                   <h4>${dish.name}</h4>
-                  <p>${canteenItem?.campus || ''} · ${canteenItem?.name || ''} · ${windowItem?.name || ''} · ¥${dish.price}</p>
+                  <p class="similar-dish-meta">${canteenItem?.campus || ''} · ${canteenItem?.name || ''} · ${windowItem?.name || ''} · ¥${dish.price}</p>
                 </div>
                 <div class="score">${dishScore > 0 ? round(dishScore) : '--'}</div>
               </div>
-              <p style="color: #6b7280; font-size: 14px; margin-top: 8px;">${dish.desc || ''}</p>
+              <p class="similar-dish-desc" style="color: #6b7280; font-size: 14px; margin-top: 8px;">${dish.desc || ''}</p>
+              ${tag ? `<div class="tags" style="margin-top: 8px;"><span class="tag blue">${tag}</span></div>` : ""}
             </div>
           </div>
         </article>
       `;
     }
 
-    function renderSimilarDishSection(title, dishes, emptyText, description = "") {
-      return `
-        <section style="margin-top: 20px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px;">
-            <div>
-              <h4 style="margin: 0; font-size: 16px;">${title}</h4>
-              ${description ? `<p style="margin: 4px 0 0 0; color: #6b7280; font-size: 13px;">${description}</p>` : ""}
-            </div>
-            <span style="padding: 4px 10px; border-radius: 999px; background: #edf4ef; color: #315143; font-size: 12px; font-weight: 600;">${dishes.length} 项</span>
+    let similarDishModalState = {
+      sourceCampus: "",
+      sameCampusSimilarDishes: [],
+      allCampusSimilarDishes: [],
+      activeTab: "sameCampus"
+    };
+
+    function currentSimilarDishItems() {
+      return similarDishModalState.activeTab === "allCampus"
+        ? similarDishModalState.allCampusSimilarDishes
+        : similarDishModalState.sameCampusSimilarDishes;
+    }
+
+    function renderSimilarDishTabs() {
+      const activeTab = similarDishModalState.activeTab;
+      const sameCount = similarDishModalState.sameCampusSimilarDishes.length;
+      const allCount = similarDishModalState.allCampusSimilarDishes.length;
+      const note = activeTab === "allCampus"
+        ? "展示全校范围内补充出来的相似菜品。"
+        : (similarDishModalState.sourceCampus
+          ? `优先展示 ${similarDishModalState.sourceCampus} 内相似度较高的菜品。`
+          : "优先展示当前校区内相似度较高的菜品。");
+
+      byId("similarDishTabs").innerHTML = `
+        <div class="similar-tab-wrap">
+          <div class="segmented similar-tab-switch">
+            <button type="button" class="${activeTab === "sameCampus" ? "active" : ""}" onclick="setSimilarDishTab('sameCampus')">
+              <span>同校区推荐</span>
+              <strong>${sameCount}</strong>
+            </button>
+            <button type="button" class="${activeTab === "allCampus" ? "active" : ""}" onclick="setSimilarDishTab('allCampus')">
+              <span>全校区推荐</span>
+              <strong>${allCount}</strong>
+            </button>
           </div>
-          ${dishes.length ? dishes.map(renderSimilarDishCard).join("") : `
-            <div class="empty" style="text-align: center; padding: 24px; color: #999; border: 1px dashed #d8e2db; border-radius: 12px;">
-              ${emptyText}
-            </div>
-          `}
-        </section>
+          <p class="similar-tab-note">${note}</p>
+        </div>
       `;
+    }
+
+    function renderActiveSimilarDishList() {
+      renderSimilarDishTabs();
+      const items = currentSimilarDishItems();
+      const emptyText = similarDishModalState.activeTab === "allCampus"
+        ? "全校范围内暂无更多相似菜品推荐。"
+        : "当前校区暂无足够相似的菜品推荐。";
+
+      byId("similarDishList").innerHTML = items.length
+        ? items.map(renderSimilarDishCard).join("")
+        : `<div class="empty">${emptyText}</div>`;
+    }
+
+    function setSimilarDishTab(tabKey) {
+      if (!["sameCampus", "allCampus"].includes(tabKey)) return;
+      similarDishModalState.activeTab = tabKey;
+      renderActiveSimilarDishList();
     }
 
     function openSimilarDishModal(id) {
@@ -5619,37 +5826,22 @@
       const { windowItem: sourceWindow, canteenItem: sourceCanteen } = getDishLocationContext(sourceDish);
       const sourceDishScore = currentDishScore(sourceDish);
 
+      similarDishModalState = {
+        sourceCampus: sourceCanteen?.campus || "",
+        sameCampusSimilarDishes,
+        allCampusSimilarDishes,
+        activeTab: "sameCampus"
+      };
+
       byId("similarDishSource").innerHTML = `
-        <div style="background: #f3f4f6; padding: 16px; border-radius: 8px; margin-bottom: 16px;">
+        <div class="similar-source-card">
           <p style="color: #6b7280; font-size: 14px; margin-bottom: 8px;">基于以下菜品推荐：</p>
           <h4 style="margin: 0;">${sourceDish.name}</h4>
           <p style="color: #6b7280; font-size: 14px; margin: 4px 0 0 0;">${sourceCanteen?.campus || ''} · ${sourceCanteen?.name || ''} · ${sourceWindow?.name || ''} · ¥${sourceDish.price} · 评分 ${sourceDishScore > 0 ? round(sourceDishScore) : '--'}</p>
           <p style="color: #4b5563; font-size: 14px; margin: 8px 0 0 0;">${sourceDish.desc || ''}</p>
         </div>
       `;
-
-      if (sameCampusSimilarDishes.length === 0 && allCampusSimilarDishes.length === 0) {
-        byId("similarDishList").innerHTML = `
-          <div class="empty" style="text-align: center; padding: 40px; color: #999;">
-            暂无相似菜品推荐
-          </div>
-        `;
-      } else {
-        byId("similarDishList").innerHTML = [
-          renderSimilarDishSection(
-            "同校园推荐",
-            sameCampusSimilarDishes,
-            "当前校区暂无足够相似的菜品推荐。",
-            sourceCanteen?.campus ? `优先展示 ${sourceCanteen.campus} 内相似度较高的菜品。` : ""
-          ),
-          renderSimilarDishSection(
-            "全校园推荐",
-            allCampusSimilarDishes,
-            "全校范围内暂无更多相似菜品推荐。",
-            "这里会补充其他校区或未在上方展示的高相似菜品。"
-          )
-        ].join("");
-      }
+      renderActiveSimilarDishList();
 
       byId("similarDishModal").classList.add("show");
       byId("similarDishModal").setAttribute("aria-hidden", "false");
@@ -6390,6 +6582,7 @@
         }
       });
       byId("recommendCampusFilter").addEventListener("change", renderDashboard);
+      byId("hotDishCampusFilter").addEventListener("change", renderDashboard);
 
 
       byId("campusFilter").addEventListener("change", () => {
