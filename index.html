@@ -5482,23 +5482,39 @@
       return union > 0 ? intersection / union : 0;
     }
 
+    function getDishLocationContext(dish) {
+      const windowItem = state.windows.find(w => w.id === dish.windowId);
+      const canteenItem = windowItem ? state.canteens.find(c => c.id === windowItem.canteenId) : null;
+      return { windowItem, canteenItem };
+    }
+
     function getSimilarDishes(canteenIdOrDishId) {
       let sourceDish = null;
 
-      // 首先尝试将其作为 dishId 查找
       if (canteenIdOrDishId) {
         sourceDish = state.dishes.find(dish => dish.id === canteenIdOrDishId);
       }
 
-      // 如果没有找到，说明传入的是 canteenId
       if (!sourceDish) {
         const canteen = state.canteens.find(item => item.id === canteenIdOrDishId);
-        if (!canteen) return { sourceDish: null, similarDishes: [] };
+        if (!canteen) {
+          return {
+            sourceDish: null,
+            sameCampusSimilarDishes: [],
+            allCampusSimilarDishes: []
+          };
+        }
 
         const canteenWindows = state.windows.filter(w => w.canteenId === canteenIdOrDishId).map(w => w.id);
         const canteenDishes = state.dishes.filter(dish => canteenWindows.includes(dish.windowId));
 
-        if (canteenDishes.length === 0) return { sourceDish: null, similarDishes: [] };
+        if (canteenDishes.length === 0) {
+          return {
+            sourceDish: null,
+            sameCampusSimilarDishes: [],
+            allCampusSimilarDishes: []
+          };
+        }
 
         sourceDish = canteenDishes[0];
         for (const dish of canteenDishes) {
@@ -5510,36 +5526,61 @@
         }
       }
 
-      const allDishes = state.dishes.filter(dish => dish.id !== sourceDish.id);
+      const { canteenItem: sourceCanteen } = getDishLocationContext(sourceDish);
+      const sourceCampus = sourceCanteen?.campus || "";
 
-      const similarDishes = allDishes
+      const rankedSimilarDishes = state.dishes
+        .filter(dish => dish.id !== sourceDish.id)
         .map(dish => {
           const similarity = calculateSemanticSimilarity(sourceDish, dish);
-          return { dish, similarity };
+          const { canteenItem } = getDishLocationContext(dish);
+          return {
+            dish,
+            similarity,
+            campus: canteenItem?.campus || ""
+          };
         })
         .filter(item => item.similarity > 0.05)
-        .sort((a, b) => b.similarity - a.similarity)
+        .sort((a, b) => b.similarity - a.similarity);
+
+      const sameCampusSimilarDishes = rankedSimilarDishes
+        .filter(item => sourceCampus && item.campus === sourceCampus)
         .slice(0, 6)
         .map(item => item.dish);
 
-      return { sourceDish, similarDishes };
+      const sameCampusDishIds = new Set(sameCampusSimilarDishes.map(item => item.id));
+      const allCampusSimilarDishes = rankedSimilarDishes
+        .filter(item => !sameCampusDishIds.has(item.dish.id))
+        .slice(0, 6)
+        .map(item => item.dish);
+
+      return {
+        sourceDish,
+        sameCampusSimilarDishes,
+        allCampusSimilarDishes
+      };
     }
 
     function renderSimilarDishCard(dish) {
-      const windowItem = state.windows.find(w => w.id === dish.windowId);
-      const canteenItem = windowItem ? state.canteens.find(c => c.id === windowItem.canteenId) : null;
+      const { windowItem, canteenItem } = getDishLocationContext(dish);
       const dishScore = currentDishScore(dish);
+      const canOpenDetail = Boolean(canteenItem && windowItem);
       return `
-        <article class="card" style="margin-bottom: 12px;">
+        <article
+          class="card recommend-card"
+          style="margin-bottom: 12px; ${canOpenDetail ? "cursor: pointer;" : ""}"
+          ${canOpenDetail ? `onclick="closeSimilarDishModal(); openCanteenDetailForCanteens('${canteenItem.id}', '${windowItem.id}', '${dish.id}')"` : ""}
+          ${canOpenDetail ? `title="查看${dish.name}详情"` : ""}
+        >
           <div class="media-row">
             <div class="food-art">${dishArt(dish.theme)}</div>
             <div style="flex: 1;">
               <div class="card-row">
                 <div>
                   <h4>${dish.name}</h4>
-                  <p>${canteenItem?.name || ''} · ${windowItem?.name || ''} · ¥${dish.price}</p>
+                  <p>${canteenItem?.campus || ''} · ${canteenItem?.name || ''} · ${windowItem?.name || ''} · ¥${dish.price}</p>
                 </div>
-                <div class="score">${dishScore > 0 ? round(dishScore) : '—'}</div>
+                <div class="score">${dishScore > 0 ? round(dishScore) : '--'}</div>
               </div>
               <p style="color: #6b7280; font-size: 14px; margin-top: 8px;">${dish.desc || ''}</p>
             </div>
@@ -5548,41 +5589,71 @@
       `;
     }
 
+    function renderSimilarDishSection(title, dishes, emptyText, description = "") {
+      return `
+        <section style="margin-top: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px;">
+            <div>
+              <h4 style="margin: 0; font-size: 16px;">${title}</h4>
+              ${description ? `<p style="margin: 4px 0 0 0; color: #6b7280; font-size: 13px;">${description}</p>` : ""}
+            </div>
+            <span style="padding: 4px 10px; border-radius: 999px; background: #edf4ef; color: #315143; font-size: 12px; font-weight: 600;">${dishes.length} 项</span>
+          </div>
+          ${dishes.length ? dishes.map(renderSimilarDishCard).join("") : `
+            <div class="empty" style="text-align: center; padding: 24px; color: #999; border: 1px dashed #d8e2db; border-radius: 12px;">
+              ${emptyText}
+            </div>
+          `}
+        </section>
+      `;
+    }
+
     function openSimilarDishModal(id) {
-      const { sourceDish, similarDishes } = getSimilarDishes(id);
+      const { sourceDish, sameCampusSimilarDishes, allCampusSimilarDishes } = getSimilarDishes(id);
 
       if (!sourceDish) {
         toast("暂无菜品，无法推荐相似菜品。");
         return;
       }
 
-      const sourceWindow = state.windows.find(w => w.id === sourceDish.windowId);
-      const sourceCanteen = state.canteens.find(c => c.id === sourceWindow?.canteenId);
+      const { windowItem: sourceWindow, canteenItem: sourceCanteen } = getDishLocationContext(sourceDish);
       const sourceDishScore = currentDishScore(sourceDish);
 
       byId("similarDishSource").innerHTML = `
         <div style="background: #f3f4f6; padding: 16px; border-radius: 8px; margin-bottom: 16px;">
           <p style="color: #6b7280; font-size: 14px; margin-bottom: 8px;">基于以下菜品推荐：</p>
           <h4 style="margin: 0;">${sourceDish.name}</h4>
-          <p style="color: #6b7280; font-size: 14px; margin: 4px 0 0 0;">${sourceCanteen?.name || ''} · ${sourceWindow?.name || ''} · ¥${sourceDish.price} · 评分 ${sourceDishScore > 0 ? round(sourceDishScore) : '—'}</p>
+          <p style="color: #6b7280; font-size: 14px; margin: 4px 0 0 0;">${sourceCanteen?.campus || ''} · ${sourceCanteen?.name || ''} · ${sourceWindow?.name || ''} · ¥${sourceDish.price} · 评分 ${sourceDishScore > 0 ? round(sourceDishScore) : '--'}</p>
           <p style="color: #4b5563; font-size: 14px; margin: 8px 0 0 0;">${sourceDish.desc || ''}</p>
         </div>
       `;
 
-      if (similarDishes.length === 0) {
+      if (sameCampusSimilarDishes.length === 0 && allCampusSimilarDishes.length === 0) {
         byId("similarDishList").innerHTML = `
           <div class="empty" style="text-align: center; padding: 40px; color: #999;">
             暂无相似菜品推荐
           </div>
         `;
       } else {
-        byId("similarDishList").innerHTML = similarDishes.map(renderSimilarDishCard).join("");
+        byId("similarDishList").innerHTML = [
+          renderSimilarDishSection(
+            "同校园推荐",
+            sameCampusSimilarDishes,
+            "当前校区暂无足够相似的菜品推荐。",
+            sourceCanteen?.campus ? `优先展示 ${sourceCanteen.campus} 内相似度较高的菜品。` : ""
+          ),
+          renderSimilarDishSection(
+            "全校园推荐",
+            allCampusSimilarDishes,
+            "全校范围内暂无更多相似菜品推荐。",
+            "这里会补充其他校区或未在上方展示的高相似菜品。"
+          )
+        ].join("");
       }
 
       byId("similarDishModal").classList.add("show");
       byId("similarDishModal").setAttribute("aria-hidden", "false");
     }
-
     function openSimilarDishModalForDish(dishId) {
       openSimilarDishModal(dishId);
     }
