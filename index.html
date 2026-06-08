@@ -2815,6 +2815,12 @@
       users: "canteen_app_users"
     };
 
+    const STATIC_DATA_PATHS = {
+      canteens: "data/canteens.json",
+      reviews: "data/reviews.json",
+      reports: "data/reports.json"
+    };
+
     const SUPABASE_STATE_ROW_ID = "default";
     let supabaseClient = undefined;
     let isUsingRemoteDatabase = false;
@@ -3467,6 +3473,33 @@
       return [...map.values()];
     }
 
+    async function fetchStaticJson(path) {
+      const response = await fetch(path, { cache: "no-store" });
+      if (!response.ok) {
+        throw new Error(`读取静态数据失败：${path} ${response.status}`);
+      }
+      return response.json();
+    }
+
+    async function loadStaticSeedData(fallbackPayload = defaultData) {
+      try {
+        const [baseData, reviews, reports] = await Promise.all([
+          fetchStaticJson(STATIC_DATA_PATHS.canteens),
+          fetchStaticJson(STATIC_DATA_PATHS.reviews),
+          fetchStaticJson(STATIC_DATA_PATHS.reports)
+        ]);
+
+        return normalizeAppData({
+          ...baseData,
+          reviews,
+          reports
+        });
+      } catch (error) {
+        console.error("静态 JSON 种子读取失败，已回退到页面内置数据：", error);
+        return normalizeAppData(fallbackPayload);
+      }
+    }
+
     async function ensureRemoteStateRow(initialPayload) {
       const client = getSupabaseClient();
       if (!client) {
@@ -3487,7 +3520,7 @@
         return normalizeAppData(data.payload);
       }
 
-      const normalizedInitial = normalizeAppData(initialPayload);
+      const normalizedInitial = await loadStaticSeedData(initialPayload);
       const { error: seedError } = await client
         .from(SUPABASE_TABLES.state)
         .upsert({
@@ -3503,6 +3536,35 @@
       }
 
       return normalizedInitial;
+    }
+
+    async function replaceRemoteStateWithStaticSeed() {
+      const client = getSupabaseClient();
+      if (!client) {
+        throw new Error("Supabase 未配置，无法执行迁移。");
+      }
+
+      const payload = await loadStaticSeedData(defaultData);
+      const { error } = await client
+        .from(SUPABASE_TABLES.state)
+        .upsert({
+          id: SUPABASE_STATE_ROW_ID,
+          payload,
+          updated_at: new Date().toISOString()
+        }, {
+          onConflict: "id"
+        });
+
+      if (error) {
+        throw normalizeSupabaseError(error, "迁移静态 JSON 到 Supabase 失败");
+      }
+
+      rememberSavedSections(payload);
+      localStorage.setItem(storageKey, JSON.stringify(payload));
+      state = structuredClone(payload);
+      isUsingRemoteDatabase = true;
+      updateDatabaseModeLabel();
+      return payload;
     }
 
     async function loadData() {
@@ -6951,6 +7013,8 @@
         subtitle.textContent = "SYSU Canteen Rating and Recommendation System · 本地缓存模式";
       }
     }
+
+    window.replaceRemoteStateWithStaticSeed = replaceRemoteStateWithStaticSeed;
 
     async function initApp() {
       initStaticIcons();
