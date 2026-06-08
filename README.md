@@ -25,3 +25,33 @@ https://howardyang33.github.io/canteen-system/
 ## 适用场景
 
 适合用于课程作业、校园信息展示、食堂评价汇总与推荐系统演示，也适合作为前端页面、数据组织和轻量部署方案的综合实践项目。
+
+---
+
+# SYSU Canteen Rating and Recommendation System
+
+Live Site:  
+https://howardyang33.github.io/canteen-system/
+
+This is a web-based system designed for Sun Yat-sen University canteen scenarios. It allows users to browse canteens, windows, and dishes, while using user reviews to support recommendation, ranking, and navigation.
+
+## Main Features
+
+- Canteen browsing: view canteens, service windows, and dishes by campus
+- Review display: check ratings and comments for canteens, windows, and dishes
+- Smart recommendation: generate results based on campus, budget, and preference settings
+- Similar recommendation: explore similar dishes and jump to their detailed locations
+- Popular content: show rankings, popular windows, and popular dishes on the homepage
+- Account system: support registration, login, and identity-based display
+- Reporting and management: support review reporting, while administrators can manage reviews, reports, and core data
+
+## System Characteristics
+
+- Built as a single-page web application
+- Deployable through GitHub Pages for direct public access
+- Business data maintained in JSON files for easy editing and updates
+- Supports Supabase integration for user and application data storage
+
+## Use Cases
+
+This project is suitable for course assignments, campus information display, canteen review aggregation, and recommendation system demonstrations. It can also serve as a practical example of frontend design, lightweight deployment, and structured data management.
