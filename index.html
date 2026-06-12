@@ -2119,26 +2119,28 @@
   <div id="loginView" class="auth-container">
     <div class="auth-box">
       <h2>中山大学食堂评价推荐系统</h2>
-      <div class="auth-field">
-        <label>用户名</label>
-        <input type="text" id="loginUsername" placeholder="请输入用户名" autocomplete="username">
-      </div>
-      <div class="auth-field">
-        <label>密码</label>
-        <input type="password" id="loginPassword" placeholder="请输入密码" autocomplete="current-password">
-      </div>
-      <div class="auth-field" style="margin-bottom: 12px;">
-        <label style="font-weight: 400; cursor: pointer; display: flex; align-items: center; gap: 8px;">
-          <input type="checkbox" id="agreeTerms" style="width: 18px; height: 18px; cursor: pointer;">
-          <span style="font-size: 13px; color: #66736e;">我已阅读并同意<a href="#" onclick="showTermsModal()"
-              style="color: #075a34; text-decoration: underline; cursor: pointer;">《用户协议》</a></span>
-        </label>
-      </div>
-      <div id="loginError" class="auth-error"></div>
-      <div class="auth-buttons">
-        <button class="btn-register" onclick="showRegister()">注册</button>
-        <button class="btn-login" onclick="handleLogin()">登录</button>
-      </div>
+      <form id="loginForm" onsubmit="event.preventDefault(); handleLogin();">
+        <div class="auth-field">
+          <label for="loginUsername">用户名</label>
+          <input type="text" id="loginUsername" name="username" placeholder="请输入用户名" autocomplete="username">
+        </div>
+        <div class="auth-field">
+          <label for="loginPassword">密码</label>
+          <input type="password" id="loginPassword" name="password" placeholder="请输入密码" autocomplete="current-password">
+        </div>
+        <div class="auth-field" style="margin-bottom: 12px;">
+          <label style="font-weight: 400; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+            <input type="checkbox" id="agreeTerms" name="agreeTerms" style="width: 18px; height: 18px; cursor: pointer;">
+            <span style="font-size: 13px; color: #66736e;">我已阅读并同意<a href="#" onclick="showTermsModal()"
+                style="color: #075a34; text-decoration: underline; cursor: pointer;">《用户协议》</a></span>
+          </label>
+        </div>
+        <div id="loginError" class="auth-error"></div>
+        <div class="auth-buttons">
+          <button type="button" class="btn-register" onclick="showRegister()">注册</button>
+          <button type="button" class="btn-login" onclick="handleLogin()">登录</button>
+        </div>
+      </form>
     </div>
   </div>
 
@@ -2202,31 +2204,33 @@
     <div class="auth-box">
       <h2>用户注册</h2>
       <p>请填写以下信息进行注册</p>
-      <div class="auth-field">
-        <label>用户名</label>
-        <input type="text" id="regUsername" placeholder="请输入用户名" autocomplete="username">
-      </div>
-      <div class="auth-field">
-        <label>身份</label>
-        <select id="regIdentity">
-          <option value="">请选择身份</option>
-          <option value="学生">学生</option>
-          <option value="老师">老师</option>
-        </select>
-      </div>
-      <div class="auth-field">
-        <label>设置密码</label>
-        <input type="password" id="regPassword" placeholder="请输入密码" autocomplete="new-password">
-      </div>
-      <div class="auth-field">
-        <label>确认密码</label>
-        <input type="password" id="regConfirmPassword" placeholder="请再次输入密码" autocomplete="new-password">
-      </div>
-      <div id="registerError" class="auth-error"></div>
-      <div class="auth-buttons">
-        <button class="btn-register" onclick="showLogin()">返回登录</button>
-        <button class="btn-submit" onclick="handleRegister()">注册</button>
-      </div>
+      <form id="registerForm" onsubmit="event.preventDefault(); handleRegister();">
+        <div class="auth-field">
+          <label for="regUsername">用户名</label>
+          <input type="text" id="regUsername" name="username" placeholder="请输入用户名" autocomplete="username">
+        </div>
+        <div class="auth-field">
+          <label for="regIdentity">身份</label>
+          <select id="regIdentity" name="identity">
+            <option value="">请选择身份</option>
+            <option value="学生">学生</option>
+            <option value="老师">老师</option>
+          </select>
+        </div>
+        <div class="auth-field">
+          <label for="regPassword">设置密码</label>
+          <input type="password" id="regPassword" name="password" placeholder="请输入密码" autocomplete="new-password">
+        </div>
+        <div class="auth-field">
+          <label for="regConfirmPassword">确认密码</label>
+          <input type="password" id="regConfirmPassword" name="confirmPassword" placeholder="请再次输入密码" autocomplete="new-password">
+        </div>
+        <div id="registerError" class="auth-error"></div>
+        <div class="auth-buttons">
+          <button type="button" class="btn-register" onclick="showLogin()">返回登录</button>
+          <button type="button" class="btn-submit" onclick="handleRegister()">注册</button>
+        </div>
+      </form>
     </div>
   </div>
 
@@ -4059,6 +4063,58 @@
       return document.getElementById(id);
     }
 
+    const modalFocusReturnTargets = new WeakMap();
+
+    function initializeModalAccessibility() {
+      document.querySelectorAll('.modal[aria-hidden="true"]').forEach(modal => {
+        modal.inert = true;
+      });
+    }
+
+    function showAccessibleModal(modal, useInlineDisplay = false) {
+      if (!modal) return;
+      const activeElement = document.activeElement;
+      modalFocusReturnTargets.set(
+        modal,
+        activeElement instanceof HTMLElement && !modal.contains(activeElement) ? activeElement : null
+      );
+      modal.inert = false;
+      modal.removeAttribute("inert");
+      modal.setAttribute("aria-hidden", "false");
+      if (useInlineDisplay) {
+        modal.style.display = "flex";
+      } else {
+        modal.classList.add("show");
+      }
+    }
+
+    function hideAccessibleModal(modal, useInlineDisplay = false, restoreFocus = true) {
+      if (!modal) return;
+      const activeElement = document.activeElement;
+      if (activeElement instanceof HTMLElement && modal.contains(activeElement)) {
+        activeElement.blur();
+      }
+
+      if (useInlineDisplay) {
+        modal.style.display = "none";
+      } else {
+        modal.classList.remove("show");
+      }
+      modal.setAttribute("aria-hidden", "true");
+      modal.inert = true;
+
+      const returnTarget = modalFocusReturnTargets.get(modal);
+      modalFocusReturnTargets.delete(modal);
+      if (!restoreFocus || !(returnTarget instanceof HTMLElement)) return;
+
+      requestAnimationFrame(() => {
+        const hiddenAncestor = returnTarget.closest('[inert], [aria-hidden="true"]');
+        if (returnTarget.isConnected && !hiddenAncestor) {
+          returnTarget.focus({ preventScroll: true });
+        }
+      });
+    }
+
     function setHtml(target, html) {
       target.innerHTML = html;
     }
@@ -4987,7 +5043,7 @@
     function drawLottery() {
       if (lotterySelectedItems.length < 2) return;
 
-      byId("lotteryResultModal").style.display = "none";
+      hideAccessibleModal(byId("lotteryResultModal"), true, false);
 
       lotteryResult = lotterySelectedItems[Math.floor(Math.random() * lotterySelectedItems.length)];
       let resultText = lotteryResult.name;
@@ -5166,7 +5222,7 @@
 
           setTimeout(() => {
             overlay.classList.remove("show");
-            byId("lotteryResultModal").style.display = "flex";
+            showAccessibleModal(byId("lotteryResultModal"), true);
           }, 900);
           return;
         }
@@ -5210,12 +5266,12 @@
 
       setTimeout(() => {
         overlay.classList.remove("show");
-        byId("lotteryResultModal").style.display = "flex";
+        showAccessibleModal(byId("lotteryResultModal"), true);
       }, 900);
     }
 
     function closeLotteryResultModal() {
-      byId("lotteryResultModal").style.display = "none";
+      hideAccessibleModal(byId("lotteryResultModal"), true);
     }
 
     function renderReviews() {
@@ -5905,8 +5961,7 @@
     }
 
     function openReviewModal(canteenId = "") {
-      byId("reviewModal").classList.add("show");
-      byId("reviewModal").setAttribute("aria-hidden", "false");
+      showAccessibleModal(byId("reviewModal"));
       byId("reviewDate").value = today();
       byId("reviewCanteen").value = "";
       byId("reviewCanteenInput").value = "";
@@ -6240,16 +6295,14 @@
       `;
       renderActiveSimilarDishList();
 
-      byId("similarDishModal").classList.add("show");
-      byId("similarDishModal").setAttribute("aria-hidden", "false");
+      showAccessibleModal(byId("similarDishModal"));
     }
     function openSimilarDishModalForDish(dishId) {
       openSimilarDishModal(dishId);
     }
 
     function closeSimilarDishModal() {
-      byId("similarDishModal").classList.remove("show");
-      byId("similarDishModal").setAttribute("aria-hidden", "true");
+      hideAccessibleModal(byId("similarDishModal"));
     }
 
     function recCanteen(canteenId) {
@@ -6257,13 +6310,11 @@
     }
 
     function closeReviewModal() {
-      byId("reviewModal").classList.remove("show");
-      byId("reviewModal").setAttribute("aria-hidden", "true");
+      hideAccessibleModal(byId("reviewModal"));
     }
 
     function openReportModal() {
-      byId("reportModal").classList.add("show");
-      byId("reportModal").setAttribute("aria-hidden", "false");
+      showAccessibleModal(byId("reportModal"));
       byId("reportTargetType").value = "";
       byId("reportReview").value = "";
       byId("reportContent").value = "";
@@ -6272,8 +6323,7 @@
     }
 
     function closeReportModal() {
-      byId("reportModal").classList.remove("show");
-      byId("reportModal").setAttribute("aria-hidden", "true");
+      hideAccessibleModal(byId("reportModal"));
     }
 
     function handleReportTargetTypeChange() {
@@ -6515,14 +6565,12 @@
     }
 
     function openCanteenModal() {
-      byId("canteenModal").setAttribute("aria-hidden", "false");
-      byId("canteenModal").classList.add("show");
+      showAccessibleModal(byId("canteenModal"));
       document.body.style.overflow = "hidden";
     }
 
     function closeCanteenModal() {
-      byId("canteenModal").setAttribute("aria-hidden", "true");
-      byId("canteenModal").classList.remove("show");
+      hideAccessibleModal(byId("canteenModal"));
       document.body.style.overflow = "";
     }
 
@@ -6534,14 +6582,12 @@
         byId("editCanteenCampus").value = canteen.campus;
         byId("editCanteenDesc").value = canteen.desc || "";
       }
-      byId("editCanteenModal").setAttribute("aria-hidden", "false");
-      byId("editCanteenModal").classList.add("show");
+      showAccessibleModal(byId("editCanteenModal"));
       document.body.style.overflow = "hidden";
     }
 
     function closeEditCanteenModal() {
-      byId("editCanteenModal").setAttribute("aria-hidden", "true");
-      byId("editCanteenModal").classList.remove("show");
+      hideAccessibleModal(byId("editCanteenModal"));
       document.body.style.overflow = "";
     }
 
@@ -6712,16 +6758,14 @@
 
       byId("viewCanteenReviewsBtn").onclick = () => openReviewList('canteen', canteenId, canteen.name);
 
-      byId("canteenDetailModalForCanteens").setAttribute("aria-hidden", "false");
-      byId("canteenDetailModalForCanteens").classList.add("show");
+      showAccessibleModal(byId("canteenDetailModalForCanteens"));
       document.body.style.overflow = "hidden";
       requestAnimationFrame(() => focusCanteenDetailTarget(focusWindowId, focusDishId));
     }
 
     function closeCanteenDetailForCanteens() {
       clearCanteenDetailFocus();
-      byId("canteenDetailModalForCanteens").setAttribute("aria-hidden", "true");
-      byId("canteenDetailModalForCanteens").classList.remove("show");
+      hideAccessibleModal(byId("canteenDetailModalForCanteens"));
       document.body.style.overflow = "";
     }
 
@@ -6767,14 +6811,12 @@
         }).join("");
       }
 
-      byId("reviewListModal").setAttribute("aria-hidden", "false");
-      byId("reviewListModal").classList.add("show");
+      showAccessibleModal(byId("reviewListModal"));
       document.body.style.overflow = "hidden";
     }
 
     function closeReviewListModal() {
-      byId("reviewListModal").setAttribute("aria-hidden", "true");
-      byId("reviewListModal").classList.remove("show");
+      hideAccessibleModal(byId("reviewListModal"));
       document.body.style.overflow = "";
     }
 
@@ -6783,14 +6825,12 @@
 
     function openDishModal(windowId) {
       currentWindowId = windowId;
-      byId("dishModal").setAttribute("aria-hidden", "false");
-      byId("dishModal").classList.add("show");
+      showAccessibleModal(byId("dishModal"));
       document.body.style.overflow = "hidden";
     }
 
     function closeDishModal() {
-      byId("dishModal").setAttribute("aria-hidden", "true");
-      byId("dishModal").classList.remove("show");
+      hideAccessibleModal(byId("dishModal"));
       document.body.style.overflow = "";
     }
 
@@ -6802,27 +6842,23 @@
         byId("editDishPrice").value = dish.price;
         byId("editDishDesc").value = dish.desc || "";
       }
-      byId("editDishModal").setAttribute("aria-hidden", "false");
-      byId("editDishModal").classList.add("show");
+      showAccessibleModal(byId("editDishModal"));
       document.body.style.overflow = "hidden";
     }
 
     function closeEditDishModal() {
-      byId("editDishModal").setAttribute("aria-hidden", "true");
-      byId("editDishModal").classList.remove("show");
+      hideAccessibleModal(byId("editDishModal"));
       document.body.style.overflow = "";
     }
 
     function openWindowModal(canteenId) {
       currentCanteenId = canteenId;
-      byId("windowModal").setAttribute("aria-hidden", "false");
-      byId("windowModal").classList.add("show");
+      showAccessibleModal(byId("windowModal"));
       document.body.style.overflow = "hidden";
     }
 
     function closeWindowModal() {
-      byId("windowModal").setAttribute("aria-hidden", "true");
-      byId("windowModal").classList.remove("show");
+      hideAccessibleModal(byId("windowModal"));
       document.body.style.overflow = "";
     }
 
@@ -6833,14 +6869,12 @@
         byId("editWindowName").value = window.name;
         byId("editWindowDesc").value = window.desc || "";
       }
-      byId("editWindowModal").setAttribute("aria-hidden", "false");
-      byId("editWindowModal").classList.add("show");
+      showAccessibleModal(byId("editWindowModal"));
       document.body.style.overflow = "hidden";
     }
 
     function closeEditWindowModal() {
-      byId("editWindowModal").setAttribute("aria-hidden", "true");
-      byId("editWindowModal").classList.remove("show");
+      hideAccessibleModal(byId("editWindowModal"));
       document.body.style.overflow = "";
     }
 
@@ -7345,14 +7379,12 @@
         byId("canteenDetailName").dataset.canteenId = canteenId;
         renderCanteenDetail(canteenId);
       }
-      byId("canteenDetailModal").setAttribute("aria-hidden", "false");
-      byId("canteenDetailModal").classList.add("show");
+      showAccessibleModal(byId("canteenDetailModal"));
       document.body.style.overflow = "hidden";
     }
 
     function closeCanteenDetailModal() {
-      byId("canteenDetailModal").setAttribute("aria-hidden", "true");
-      byId("canteenDetailModal").classList.remove("show");
+      hideAccessibleModal(byId("canteenDetailModal"));
       document.body.style.overflow = "";
     }
 
@@ -7415,14 +7447,12 @@
         byId("windowDetailName").dataset.windowId = windowId;
         renderWindowDetail(windowId);
       }
-      byId("windowDetailModal").setAttribute("aria-hidden", "false");
-      byId("windowDetailModal").classList.add("show");
+      showAccessibleModal(byId("windowDetailModal"));
       document.body.style.overflow = "hidden";
     }
 
     function closeWindowDetailModal() {
-      byId("windowDetailModal").setAttribute("aria-hidden", "true");
-      byId("windowDetailModal").classList.remove("show");
+      hideAccessibleModal(byId("windowDetailModal"));
       document.body.style.overflow = "";
     }
 
@@ -7727,13 +7757,11 @@
     }
 
     function showTermsModal() {
-      document.getElementById('termsModal').classList.add('show');
-      document.getElementById('termsModal').setAttribute('aria-hidden', 'false');
+      showAccessibleModal(document.getElementById('termsModal'));
     }
 
     function closeTermsModal() {
-      document.getElementById('termsModal').classList.remove('show');
-      document.getElementById('termsModal').setAttribute('aria-hidden', 'true');
+      hideAccessibleModal(document.getElementById('termsModal'));
     }
 
     function showMainContent() {
@@ -7799,6 +7827,7 @@
 
     async function initApp() {
       initStaticIcons();
+      initializeModalAccessibility();
       bindEvents();
       byId("openReviewBtn").style.display = "none";
       state = await loadData();
